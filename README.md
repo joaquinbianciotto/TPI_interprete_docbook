@@ -88,8 +88,8 @@
   Etiquetas básicas de párrafo
   
     INFO → <info>A</info>
-    A  → MOBJ A | ABSTRACT A | ADDRESS A | AUTHOR A | DATE A | COPY A | TITLE A | 
-    A  → MOBJ | ABSTRACT | ADDRESS | AUTHOR | DATE | COPY | TITLE
+    A → MOBJ A | ABSTRACT A | ADDRESS A | AUTHOR A | DATE A | COPY A | TITLE A | 
+    A → MOBJ | ABSTRACT | ADDRESS | AUTHOR | DATE | COPY | TITLE
     ABSTRACT →<abstract>TITLE B</abstract> | <abstract> B</abstract>
     B → PARA B | SPARA B 
     B → PARA | SPARA
@@ -100,7 +100,7 @@
     D → FNAME D| SNAME D 
     D → FNAME | SNAME
     COPY → <copyright>EF</copyright>| <copyright>E</copyright>
-    E→ YEAR E | YEAR
+    E → YEAR E | YEAR
     F → HOLDER F | HOLDER
     TITLE→ <title>G</title>
     G → #texto G | EMPHASIS G | LINK G | EMAIL G
@@ -109,15 +109,15 @@
     EMPHASIS → < emphasis> H </emphasis> 
     COMMENT → <comment> H </comment>
     LINK → <link U> H </link>
-    U→ xlink:href=”#url”
-    H →| #texto H | EMPHASIS H | LINK H | EMAIL H | AUTHOR H | COMMENT H
+    U → xlink:href=”#url”
+    H → #texto H | EMPHASIS H | LINK H | EMAIL H | AUTHOR H | COMMENT H
     H → #texto | EMPHASIS | LINK | EMAIL | AUTHOR | COMMENT 
     PARA → <para>I</para>
-    I→ #texto I | EMPHASIS I | LINK I | EMAIL I | AUTHOR I | COMMENT I | ITEMLIST I | IMPORTANT I | ADDRESS I | MOBJ I | INFTABLE I |
-    I→ | #texto |EMPHASIS | LINK | EMAIL | AUTHOR | COMMENT | ITEMLIST | IMPORTANT| ADDRESS | MOB | INFTABLE
+    I → #texto I | EMPHASIS I | LINK I | EMAIL I | AUTHOR I | COMMENT I | ITEMLIST I | IMPORTANT I | ADDRESS I | MOBJ I | INFTABLE I |
+    I → #texto |EMPHASIS | LINK | EMAIL | AUTHOR | COMMENT | ITEMLIST | IMPORTANT| ADDRESS | MOB | INFTABLE
     IMPORTANT → <important>TITLE J </important>| <important> J </important>
-    J →  ITEMLIST J | IMPORTANT J | PARA J | SPARA J | ADDRESS J | MOBJ J | INFTABLE J | COMMENT J | ABSTRACT J | 
-    J →  ITEMLIST  | IMPORTANT   | PARA   | SPARA  | ADDRESS  | MOBJ  | INFTABLE  | COMMENT  | ABSTRACT  |
+    J → ITEMLIST J | IMPORTANT J | PARA J | SPARA J | ADDRESS J | MOBJ J | INFTABLE J | COMMENT J | ABSTRACT J | 
+    J → ITEMLIST  | IMPORTANT   | PARA   | SPARA  | ADDRESS  | MOBJ  | INFTABLE  | COMMENT  | ABSTRACT  |
     FIRSTNAME → <firstname> K </firstname>
     SURNAME → <surname> K </surname>
     STREET → <street> K </street>
@@ -128,26 +128,26 @@
     DATE → <date> K </date>
     YEAR → <year> K </year>
     HOLDER → <holder> K </holder>
-    K→ #texto K | LINK K | EMPHASIS K | COMMENT K 
-    K→ #texto | LINK | EMPHASIS | COMMENT
+    K → #texto K | LINK K | EMPHASIS K | COMMENT K 
+    K → #texto | LINK | EMPHASIS | COMMENT
 
   Imágenes y multimedia
   
-    MOBJ→ <mediaobject> INFO L </mediaobject> | <mediaobject> L </mediaobject>
+    MOBJ → <mediaobject> INFO L </mediaobject> | <mediaobject> L </mediaobject>
     L → VOBJ L | IOBJ L
-    L →VOBJ | IOBJ
-    IOBJ→ <imageobject> INFO IDATA </imageobject>
-    IOBJ→ <imageobject> IDATA </imageobject> 
-    IDATA→<imagedata fileref=”#url”/>
-    VOBJ→ <videoobject> INFO VDATA </videoobject> 
-    VOBJ→ <videoobject> VDATA </videoobject>
-    VDATA→<videodata fileref=”#url”/>
+    L → VOBJ | IOBJ
+    IOBJ → <imageobject> INFO IDATA </imageobject>
+    IOBJ → <imageobject> IDATA </imageobject> 
+    IDATA → <imagedata fileref=”#url”/>
+    VOBJ → <videoobject> INFO VDATA </videoobject> 
+    VOBJ → <videoobject> VDATA </videoobject>
+    VDATA → <videodata fileref=”#url”/>
 
   Listas
   
-    ITEMLIST→<itemizedlist> M </itemizedlist>
-    M→LITEM M | LITEM
-    LITEM→ <listitem> J </listitem>
+    ITEMLIST → <itemizedlist> M </itemizedlist>
+    M → LITEM M | LITEM
+    LITEM → <listitem> J </listitem>
 
   Tablas
   
