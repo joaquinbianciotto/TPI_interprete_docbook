@@ -5,24 +5,34 @@
 # Trabajo Práctico Integrador
   Diseño e implementación de Lexer y Parser y Traductor de Lenguaje RSS
 
-  Asignatura: Sintaxis y Semántica de los Lenguajes 
+  Asignatura: Sintaxis y Semántica de los Lenguajes
+  
   Grupo: N.º 4
+  
   Integrantes:  
-    - AGUIRRE, Camilo 
-    - BIANCIOTTO, Joaquín
-    - COLOMBO, Julián
-    - MARAIN, Yoel Mario
+  
+   - AGUIRRE, Camilo 
+    
+   - BIANCIOTTO, Joaquín
+    
+   - COLOMBO, Julián
+    
+   - MARAIN, Yoel Mario
+   
   Curso: ISI A 
+  
   Curso Académico: 2023
+  
   Cuatrimestre: Primero
+  
   Fecha y Lugar de presentación: 30/04/2023. Resistencia, Chaco
 
 
 # Contenido
   1. INTRODUCCION
   2. GRAMÁTICA
-    2.1 Símbolos de la gramática
-    2.2 Producciones
+   - 2.1 Símbolos de la gramática
+   - 2.2 Producciones
   3. WEBGRAFIA
 
 # 1. INTRODUCCION:
@@ -38,38 +48,45 @@
   Algunos de los principales usos de Docbook son:
 
    •	Libros para publicación impresa
+   
    •	Mantenimiento de sitios web
+   
    •	Sitios web de preguntas frecuentes
+   
    •	Documentación informática
+   
    •	Producción de diapositivas de presentación
+   
    •	Producir documentación generada a partir de comentarios de código 
 
 # 2. GRAMÁTICA:
 
 # 2.1 Símbolos de la gramática:
 
-  Símbolo sentencia = S
+    Símbolo sentencia = S
 
-  No terminales = {SEC, SSEC, INFO, ABSTRACT ADRESS, AUTHOR, COPY, TITLE, SPARA, EMPHASIS, COMMENT, LINK, EMAIL, MOBJ, FIRSTNAME, SURNAME, STREET, CITY, STATE, PHONE, DATE, YEAR, HOLDER, IOBJ, IDATA, VOBJ, VDATA, ITEMLIST, LITEM, INFTABLE, TGROUP, THEAD, TFOOD, TBODY, ROW, ENTRY, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, T, U, V, X, Y, Z }
+    No terminales = {SEC, SSEC, INFO, ABSTRACT ADRESS, AUTHOR, COPY, TITLE, SPARA, EMPHASIS, COMMENT, LINK, EMAIL, MOBJ, FIRSTNAME, SURNAME, STREET, CITY, STATE, PHONE, DATE, YEAR, HOLDER, IOBJ, IDATA, VOBJ, VDATA, ITEMLIST, LITEM, INFTABLE, TGROUP, THEAD, TFOOD, TBODY, ROW, ENTRY, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, T, U, V, X, Y, Z }
 
-  Terminales= {#texto, #url}
+    Terminales= {#texto, #url}
   
 # 2.2 Producciones:
 
   Etiquetas estructurales del documento
+  
     S → <!DOCTYPE article><article> Y X Z </article>
     S → <!DOCTYPE article><article> Y X </article>
-    S → <!DOCTYPE article><article>  X Z </article>   
+    S → <!DOCTYPE article><article>  X Z </article>
     S → <!DOCTYPE article><article>  X </article> 
     Y → INFO TITLE | INFO | TITLE
     X → ITEMLIST X | IMPORTANT X | PARA X | SPARA X | ADDRESS X | MOBJ X | INFTABLE X | COMMENT X | ABSTRACT X  
     X → ITEMLIST | IMPORTANT | PARA | SPARA | ADDRESS | MOBJ | INFTABLE | COMMENT | ABSTRACT 
     Z → SEC Z | SSEC Z 
-    Z→SEC|SSEC
+    Z → SEC|SSEC
     SEC → <section>Y X Z</section> | <section>Y X</section> | <section>X Z</section> | <section>X </section>
     SSEC → <simplesec>Y X</simplesec> | <simplesec>X</simplesec>
     
   Etiquetas básicas de párrafo
+  
     INFO → <info>A</info>
     A  → MOBJ A | ABSTRACT A | ADDRESS A | AUTHOR A | DATE A | COPY A | TITLE A | 
     A  → MOBJ | ABSTRACT | ADDRESS | AUTHOR | DATE | COPY | TITLE
@@ -115,6 +132,7 @@
     K→ #texto | LINK | EMPHASIS | COMMENT
 
   Imágenes y multimedia
+  
     MOBJ→ <mediaobject> INFO L </mediaobject> | <mediaobject> L </mediaobject>
     L → VOBJ L | IOBJ L
     L →VOBJ | IOBJ
@@ -126,11 +144,13 @@
     VDATA→<videodata fileref=”#url”/>
 
   Listas
+  
     ITEMLIST→<itemizedlist> M </itemizedlist>
     M→LITEM M | LITEM
     LITEM→ <listitem> J </listitem>
 
   Tablas
+  
     INFTABLE → <informaltable> N </informaltable>
     N → MOBJ N | TGROUP N
     N → MOBJ | TGROUP 
@@ -151,4 +171,5 @@
 
 # 3. WEBGRAFIA:
   •	https://wiki.archlinux.org/title/DocBook
+  
   •	https://web.archive.org/web/20120123183312/http://www.dpawson.co.uk/docbook/reference.html
