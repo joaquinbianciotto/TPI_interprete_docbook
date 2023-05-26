@@ -69,7 +69,7 @@
 
     No terminales = {SEC, SSEC, INFO, ABSTRACT ADRESS, AUTHOR, COPY, TITLE, SPARA, EMPHASIS, COMMENT, LINK, EMAIL, MOBJ, FIRSTNAME, SURNAME, STREET, CITY, STATE, PHONE, DATE, YEAR, HOLDER, IOBJ, IDATA, VOBJ, VDATA, ITEMLIST, LITEM, INFTABLE, TGROUP, THEAD, TFOOD, TBODY, ROW, ENTRY, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, T, U, V, X, Y, Z }
 
-    Terminales= {#texto, #url, <, >, /, =, !DOCTYPE, article, section, simplesec, info, abstract, address, author, copyright, title, simpara, emphasis, comment, link, xlink:href, para, important, firstname, surname, street, city, state, phone, email, date, year, holder, mediaobject, imageobject, imagedata, fileref, videoobject, videodata, itemizedlist, listitem, informaltable, tgroup, thead, tfood, tbody, row, entry, entrybl}
+    Terminales= {#texto, #url, <, >, /, =, ", !DOCTYPE, article, section, simplesec, info, abstract, address, author, copyright, title, simpara, emphasis, comment, link, xlink:href, para, important, firstname, surname, street, city, state, phone, email, date, year, holder, mediaobject, imageobject, imagedata, fileref, videoobject, videodata, itemizedlist, listitem, informaltable, tgroup, thead, tfood, tbody, row, entry, entrybl}
   
 # 2.2 Producciones: <a name="gramatica2"></a>
 
