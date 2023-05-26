@@ -1,14 +1,10 @@
 ###### <img src="https://frro.cvg.utn.edu.ar/theme/image.php/snap/theme/1652373334/img/logo"  width="20%" height="20%">
-### UNIVERSIDAD TECNOLOGICA NACIONAL - FACULTAD REGIONAL RESISTENCIA
-### Ingeniería en Sistemas de Información
 
-# TRABAJO PRÁCTICO INTEGRADOR
+# SINTAXIS Y SEMÁNTICA DE LOS LENGUAJES - TRABAJO PRÁCTICO INTEGRADOR
 ### Diseño e implementación de Lexer y Parser y Traductor de Lenguaje RSS
 
-  **Asignatura:** Sintaxis y Semántica de los Lenguajes
-  
   **Grupo:** N.º 4
-  
+
   **Integrantes:**  
   
    - AGUIRRE, Camilo 
@@ -18,17 +14,23 @@
    - COLOMBO, Matías Julián
     
    - MARAIN, Yoel Mario
-   
-  **Curso:** ISI A 
+
+  **Carrera:** Ingeniería en Sistemas de Información
+  
+  **Comisión:** ISI A 
+  
+  **Primer Cuatrimestre**
   
   **Curso Académico:** 2023
   
-  **Cuatrimestre:** Primero
+  **UNIVERSIDAD TECNOLOGICA NACIONAL**
+  
+  **FACULTAD REGIONAL RESISTENCIA**
   
   **Fecha y Lugar de presentación:** 30/04/2023. Resistencia, Chaco
 
 
-# Contenido
+# Índice
   + [1. INTRODUCCION](#introduccion)
   + [2. GRAMÁTICA](#gramatica)
     + [2.1 Símbolos de la gramática](#gramatica1)
