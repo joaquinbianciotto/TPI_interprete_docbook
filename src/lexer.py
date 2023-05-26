@@ -15,7 +15,11 @@ tokens = [ 'DT1','DT2','APERTURA_ARTICLE', 'CIERRE_ARTICLE' , 'APERTURA_PARA', '
           'APERTURA_FIRSTNAME' , 'CIERRE_FIRSTNAME' , 'APERTURA_SURNAME' , 'CIERRE_SURNAME' , 'APERTURA_STREET' , 
           'CIERRE_STREET' , 'APERTURA_CITY' , 'CIERRE_CITY' , 'APERTURA_STATE' , 'CIERRE_STATE' , 'APERTURA_PHONE' , 
           'CIERRE_PHONE' , 'APERTURA_EMAIL' , 'CIERRE_EMAIL' , 'APERTURA_DATE' , 'CIERRE_DATE' , 'APERTURA_YEAR' , 
-          'CIERRE_YEAR' , 'APERTURA_HOLDER' , 'CIERRE_HOLDER'
+          'CIERRE_YEAR' , 'APERTURA_HOLDER' , 'CIERRE_HOLDER', 'APERTURA_IMAGEDATA' , 'APERTURA_VIDEOOBJECT' ,
+          'CIERRE_VIDEOOBJECT' , 'APERTURA_IMAGENOBJECT' , 'CIERRE_IMAGENOBJECT' , 'APERTURA_VIDEODATA', 'APERTURA_LISTITEM' ,
+          'CIERRE_LISTITEM' , 'APERTURA_TGROUP' , 'CIERRE_TGROUP' , 'APERTURA_THEAD' , 'CIERRE_THEAD' , 'APERTURA_TFOOT' ,
+          'CIERRE_TFOOT' , 'APERTURA_TBODY' , 'CIERRE_TBODY' , 'APERTURA_ROW' , 'CIERRE_ROW' , 'APERTURA_ENTRY' ,
+          'CIERRE_ENTRY' , 'APERTURA_ENTRYTBL' , 'CIERRE_ENTRYTBL'
 		]
 
 t_ignore = '\t '   #nose que hace pero vi en varios, creo q ignora espacios en blanco o tabulacion
@@ -65,6 +69,30 @@ t_APERTURA_YEAR = r'<year>'
 t_CIERRE_YEAR = r'</year>'
 t_APERTURA_HOLDER = r'<holder>'
 t_CIERRE_HOLDER = r'</holder>'
+t_APERTURA_VIDEOOBJECT = r'<videoobject>'
+t_CIERRE_VIDEOOBJECT = r'</videoobject>'
+t_APERTURA_IMAGENOBJECT = r'<imagenobject>'
+t_CIERRE_IMAGENOBJECT = r'</imagenobject>'
+t_APERTURA_LISTITEM = r'<listitem>'
+t_CIERRE_LISTITEM = r'</listitem>'
+t_APERTURA_INFORMALTABLE = r'<informaltable>'
+t_CIERRE_INFORMALTABLE = r'</informaltable>'
+t_APERTURA_TGROUP = r'<tgroup>'
+t_CIERRE_TGROUP = r'</tgroup>'
+t_APERTURA_THEAD = r'<thead>'
+t_CIERRE_THEAD = r'</thead>'
+t_APERTURA_TFOOD = r'<tfood>'
+t_CIERRE_TFOOD = r'</tfood>'
+t_APERTURA_TBODY = r'<tbody>'
+t_CIERRE_TBODY = r'<tbody>'
+t_APERTURA_ROW = r'<row>'
+t_CIERRE_ROW = r'</row>'
+t_APERTURA_ENTRY = r'<entry>'
+t_CIERRE_ENTRY = r'</entry>'
+t_APERTURA_ENTRYTBL = r'<entrytbl>'
+t_CIERRE_ENTRYTBL = r'</entrytbl>'
+
+
 arch= open("src/archivo.html","w",encoding="utf-8")
 
 #funciones
@@ -111,6 +139,16 @@ def t_CIERRE_IMPORTANT(t):
       r'</important>'
       arch.write('</div>')
       return(t)
+def t_APERTURA_IMAGEDATA (t):
+      r'<imagedata = fileref="^(https|ftp|http|ftps):\/\/([^\s\/$.?#]+\.[^\s\/$.?#]+)(:\d+)?(\/[^\s$?#]*)?(#[^\s]*)?$">'
+      return(t)
+def t_APERTURA_VIDEODATA (t):
+      r'<videodata= fileref="^(https|ftp|http|ftps):\/\/([^\s\/$.?#]+\.[^\s\/$.?#]+)(:\d+)?(\/[^\s$?#]*)?(#[^\s]*)?$">'
+      return(t)
+def t_APERTURA_LINK (t):
+      r'link = xlink:href ="^(https|ftp|http|ftps):\/\/([^\s\/$.?#]+\.[^\s\/$.?#]+)(:\d+)?(\/[^\s$?#]*)?(#[^\s]*)?$"'
+      return (t)
+
 
 
 lexer = lex.lex()
