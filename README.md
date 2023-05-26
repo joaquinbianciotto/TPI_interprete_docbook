@@ -1,15 +1,15 @@
-# UNIVERSIDAD TECNOLOGICA NACIONAL - FACULTAD REGIONAL RESISTENCIA
-  INGENIERIA EN SISTEMAS DE INFORMACION
+###### <img src="https://frro.cvg.utn.edu.ar/theme/image.php/snap/theme/1652373334/img/logo"  width="20%" height="20%">
+### UNIVERSIDAD TECNOLOGICA NACIONAL - FACULTAD REGIONAL RESISTENCIA
+### Ingeniería en Sistemas de Información
 
+# TRABAJO PRÁCTICO INTEGRADOR
+### Diseño e implementación de Lexer y Parser y Traductor de Lenguaje RSS
 
-# Trabajo Práctico Integrador
-  Diseño e implementación de Lexer y Parser y Traductor de Lenguaje RSS
-
-  Asignatura: Sintaxis y Semántica de los Lenguajes
+  **Asignatura:** Sintaxis y Semántica de los Lenguajes
   
-  Grupo: N.º 4
+  **Grupo:** N.º 4
   
-  Integrantes:  
+  **Integrantes:**  
   
    - AGUIRRE, Camilo 
     
@@ -19,23 +19,23 @@
     
    - MARAIN, Yoel Mario
    
-  Curso: ISI A 
+  **Curso:** ISI A 
   
-  Curso Académico: 2023
+  **Curso Académico:** 2023
   
-  Cuatrimestre: Primero
+  **Cuatrimestre:** Primero
   
-  Fecha y Lugar de presentación: 30/04/2023. Resistencia, Chaco
+  **Fecha y Lugar de presentación:** 30/04/2023. Resistencia, Chaco
 
 
 # Contenido
-  1. INTRODUCCION
-  2. GRAMÁTICA
-   - 2.1 Símbolos de la gramática
-   - 2.2 Producciones
-  3. WEBGRAFIA
+  + [1. INTRODUCCION](#introduccion)
+  + [2. GRAMÁTICA](#gramatica)
+    + [2.1 Símbolos de la gramática](#gramatica1)
+    + [2.2 Producciones](#gramatica2)
+  + [3. WEBGRAFIA](#webgrafia)
 
-# 1. INTRODUCCION:
+# 1. INTRODUCCION: <a name="introduccion"></a>
   En esta primera entrega del Trabajo Practico Integrador se presenta la gramática del software desarrollada. 
 
   El objetivo de este trabajo es construir un analizador léxico y sintáctico que permita analizar, validar y transformar un subconjunto de etiquetas de la especificación DocBook/XML para la descripción de artículos. La utilidad construida recibe un archivo en formato XML y contenido Docbook y deberá indicar si está bien construido (adecuado al estándar, sin errores) de otra manera indicar los errores; adicionalmente a medida que analiza el documento deberá transformar el contenido en un documento HTML.
@@ -59,9 +59,9 @@
    
    •	Producir documentación generada a partir de comentarios de código 
 
-# 2. GRAMÁTICA:
+# 2. GRAMÁTICA: <a name="gramatica"></a>
 
-# 2.1 Símbolos de la gramática:
+# 2.1 Símbolos de la gramática: <a name="gramatica1"></a>
 
     Símbolo sentencia = S
 
@@ -69,7 +69,7 @@
 
     Terminales= {#texto, #url}
   
-# 2.2 Producciones:
+# 2.2 Producciones: <a name="gramatica2"></a>
 
   Etiquetas estructurales del documento
   
@@ -169,7 +169,7 @@
     ENTRYTBL → <entrytbl> T </entrytbl>
     T → THEAD TBODY | TBODY
 
-# 3. WEBGRAFIA:
+# 3. WEBGRAFIA: <a name="webgrafia"></a>
   •	https://wiki.archlinux.org/title/DocBook
   
   •	https://web.archive.org/web/20120123183312/http://www.dpawson.co.uk/docbook/reference.html
