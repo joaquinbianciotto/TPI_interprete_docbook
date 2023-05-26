@@ -3,9 +3,9 @@ import re
 import codecs
 import os
 import sys
+error_caracter_ilegal=[]
 
-
-tokens = [ 'APERTURA_ARTICLE', 'CIERRE_ARTICLE' , 'APERTURA_PARA', 'CIERRE_PARA', 'TEXTO', 
+tokens = [ 'DT1','DT2','APERTURA_ARTICLE', 'CIERRE_ARTICLE' , 'APERTURA_PARA', 'CIERRE_PARA', 'TEXTO', 
           'APERTURA_INFO' , 'CIERRE_INFO' , 'APERTURA_TITLE' , 'CIERRE_TITLE' , 'APERTURA_ITEMIZEDLIST',
           'CIERRE_ITEMIZEDLIST', 'APERTURA_IMPORTANT' , 'CIERRE_IMPORTANT' , 'APERTURA_SIMPARA',
           'CIERRE_SIMPARA' , 'APERTURA_ADDRESS' , 'CIERRE_ADDRESS' , 'APERTURA_MEDIAOBJECT' , 'CIERRE_MEDIAOBJECT' , 
@@ -18,16 +18,15 @@ tokens = [ 'APERTURA_ARTICLE', 'CIERRE_ARTICLE' , 'APERTURA_PARA', 'CIERRE_PARA'
           'CIERRE_YEAR' , 'APERTURA_HOLDER' , 'CIERRE_HOLDER'
 		]
 
-arch= open("archivo.html","w",encoding="utf-8")
 t_ignore = '\t '   #nose que hace pero vi en varios, creo q ignora espacios en blanco o tabulacion
+
+
 t_APERTURA_ARTICLE = r'<article>'
 t_CIERRE_ARTICLE = r'</article>'
-#t_APERTURA_PARA = r'<para>'
-#t_CIERRE_PARA = r'</para>'
-t_APERTURA_INFO = r'<info>'
-t_CIERRE_INFO = r'</info>'
-t_APERTURA_TITLE = r'<title>'
-t_CIERRE_TITLE = r'</title>'
+#t_APERTURA_INFO = r'<info>'
+#t_CIERRE_INFO = r'</info>'
+#t_APERTURA_TITLE = r'<title>'
+#t_CIERRE_TITLE = r'</title>'
 t_APERTURA_ITEMIZEDLIST = r'<itemizedlist>'
 t_CIERRE_ITEMIZEDLIST = r'</itemizedlist>'
 t_APERTURA_IMPORTANT = r'<important>'
@@ -72,14 +71,19 @@ t_APERTURA_YEAR = r'<year>'
 t_CIERRE_YEAR = r'</year>'
 t_APERTURA_HOLDER = r'<holder>'
 t_CIERRE_HOLDER = r'</holder>'
+arch= open("src/archivo.html","w",encoding="utf-8")
 
 #funciones
+def t_DT1(t):
+      r'<[!]DOCTYPE\sarticle>'
+      arch.write("<!DOCTYPE html>")
 def t_TEXTO (t):
     r'[a-zA-Z][a-zA-Z0-9]*'  #falta ver caraxteres especiales
-
+    arch.write(f'{t.value} ')
     return (t)
 def t_error(t):
-	print ("caracter ilegal '%s'" % t.value[0])
+      
+	#print ("caracter ilegal %s" % t.value[0])
 	t.lexer.skip(1)
 def t_APERTURA_PARA(t):
       r'<para>'
@@ -89,24 +93,24 @@ def t_CIERRE_PARA(t):
       r'</para>'
       arch.write("</p>")
       return(t)
+def t_APERTURA_TITLE(t):
+      r'<title>'
+      arch.write("<h1>")
+      return(t)
+def t_CIERRE_TITLE(t):
+      r'</title>'
+      arch.write("</h1>")
+      return(t)
+def t_APERTURA_INFO(t):
+      r'<info>'
+      arch.write('<p style="color:white;background-color:green">')   #todavia no consigo que ande
+      return(t)
+def t_CIERRE_INFO(t):
+      r'</info>'
+      arch.write('</p>')
+      return(t)
 
-print ("Hola este es el analizador Lexico")
-print ("Ingrese el codigo a analizar \n")
-cadena = ''
-while True:
-	cad = input()
-	cadena = cadena+cad+ '\n'
-	break
-	if not cadena: continue
-	print ('\n')	
+
+
 lexer = lex.lex()
-#ciclo para mostrar tokens 
-lexer.input(cadena)
-while True:
-    tok = lexer.token()
-    
-    if not tok : break
-    if tok.type == "TEXTO":
-          arch.write(tok.value)
-    print (tok)
-    
+contador = 0
