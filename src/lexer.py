@@ -29,8 +29,8 @@ t_CIERRE_ARTICLE = r'</article>'
 #t_CIERRE_TITLE = r'</title>'
 t_APERTURA_ITEMIZEDLIST = r'<itemizedlist>'
 t_CIERRE_ITEMIZEDLIST = r'</itemizedlist>'
-t_APERTURA_IMPORTANT = r'<important>'
-t_CIERRE_IMPORTANT = r'</important>'
+#t_APERTURA_IMPORTANT = r'<important>'
+#t_CIERRE_IMPORTANT = r'</important>'
 t_APERTURA_SIMPARA = r'<simpara>'
 t_CIERRE_SIMPARA = r'</simpara>'
 t_APERTURA_ADDRESS = r'<address>'
@@ -103,13 +103,20 @@ def t_CIERRE_TITLE(t):
       return(t)
 def t_APERTURA_INFO(t):
       r'<info>'
-      arch.write('<p style="color:white;background-color:green">')   #todavia no consigo que ande
+      arch.write('<div style="color:white;background-color:green;font-size:8pts"><p>')   #todavia no consigo que ande
       return(t)
 def t_CIERRE_INFO(t):
       r'</info>'
-      arch.write('</p>')
+      arch.write('</p></div>')
       return(t)
-
+def t_APERTURA_IMPORTANT(t):
+      r'<important>'
+      arch.write('<div style="background-color:red;color:white">')
+      return(t)
+def t_CIERRE_IMPORTANT(t):
+      r'</important>'
+      arch.write('</div>')
+      return(t)
 
 
 lexer = lex.lex()

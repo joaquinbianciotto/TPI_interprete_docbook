@@ -10,7 +10,9 @@
 <sect1>
 <title>Titulo para la seccion 1</title>
 <para>
+<important>
 Esto es un parrafo
+</important>
 </para>
 <para>
 Otro parrafo.
