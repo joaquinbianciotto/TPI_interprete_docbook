@@ -27,16 +27,12 @@ t_ignore = '\t '   #nose que hace pero vi en varios, creo q ignora espacios en b
 
 t_APERTURA_ARTICLE = r'<article>'
 t_CIERRE_ARTICLE = r'</article>'
-t_APERTURA_ITEMIZEDLIST = r'<itemizedlist>'
-t_CIERRE_ITEMIZEDLIST = r'</itemizedlist>'
 t_APERTURA_SIMPARA = r'<simpara>'
 t_CIERRE_SIMPARA = r'</simpara>'
 t_APERTURA_ADDRESS = r'<address>'
 t_CIERRE_ADDRESS = r'</address>'
 t_APERTURA_MEDIAOBJECT = r'<mediaobject>'
 t_CIERRE_MEDIAOBJECT = r'</mediaobject>'
-t_APERTURA_INFORMALTABLE = r'<informaltable>'
-t_CIERRE_INFORMALTABLE = r'</informaltable>'
 t_APERTURA_COMMENT = r'<comment>'
 t_CIERRE_COMMENT = r'</comment>'
 t_APERTURA_ABSTRACT = r'<abstract>'
@@ -47,8 +43,6 @@ t_APERTURA_SIMPLESECT = r'<simplesect>'
 t_CIERRE_SIMPLESECT = r'</simplesect>'
 t_APERTURA_EMPHASIS = r'<emphasis>'
 t_CIERRE_EMPHASIS = r'</emphasis>'
-t_APERTURA_LINK = r'<link>'
-t_CIERRE_LINK = r'</link>'
 t_APERTURA_FIRSTNAME = r'<firstname>'
 t_CIERRE_FIRSTNAME = r'</firstname>'
 t_APERTURA_SURNAME = r'<surname>'
@@ -73,10 +67,6 @@ t_APERTURA_VIDEOOBJECT = r'<videoobject>'
 t_CIERRE_VIDEOOBJECT = r'</videoobject>'
 t_APERTURA_IMAGENOBJECT = r'<imagenobject>'
 t_CIERRE_IMAGENOBJECT = r'</imagenobject>'
-t_APERTURA_LISTITEM = r'<listitem>'
-t_CIERRE_LISTITEM = r'</listitem>'
-t_APERTURA_INFORMALTABLE = r'<informaltable>'
-t_CIERRE_INFORMALTABLE = r'</informaltable>'
 t_APERTURA_TGROUP = r'<tgroup>'
 t_CIERRE_TGROUP = r'</tgroup>'
 t_APERTURA_THEAD = r'<thead>'
@@ -85,10 +75,6 @@ t_APERTURA_TFOOD = r'<tfood>'
 t_CIERRE_TFOOD = r'</tfood>'
 t_APERTURA_TBODY = r'<tbody>'
 t_CIERRE_TBODY = r'<tbody>'
-t_APERTURA_ROW = r'<row>'
-t_CIERRE_ROW = r'</row>'
-t_APERTURA_ENTRY = r'<entry>'
-t_CIERRE_ENTRY = r'</entry>'
 t_APERTURA_ENTRYTBL = r'<entrytbl>'
 t_CIERRE_ENTRYTBL = r'</entrytbl>'
 
@@ -147,9 +133,47 @@ def t_APERTURA_VIDEODATA (t):
       return(t)
 def t_APERTURA_LINK (t):
       r'link = xlink:href ="^(https|ftp|http|ftps):\/\/([^\s\/$.?#]+\.[^\s\/$.?#]+)(:\d+)?(\/[^\s$?#]*)?(#[^\s]*)?$"'
+      arch.write(f'<a href="{t.value}">esto es un link</a>')
       return (t)
-
-
-
+def t_APERTURA_INFORMALTABLE(t):
+      r'<informaltable>'
+      arch.write("<table>")
+      return (t)
+def t_CIERRE_INFORMALTABLE(t):
+      r'</informaltable>'
+      arch.write("</table>")
+      return (t)
+def t_APERTURA_ROW(t):                                #un problema con esto es que en html todos son tr y se diferencian adentro usando 
+      r'<row>'                                        #<th></th> para los encabezados y pies de la tabla
+      arch.write("<tr>")
+      return (t)
+def t_CIERRE_ROW(t):
+      r'</row>'
+      arch.write("</tr>")
+      return (t)
+def t_APERTURA_ENTRY(t): 
+      r'<entry>'
+      arch.write("<td>")
+      return (t)
+def t_CIERRE_ENTRY(t): 
+      r'</entry>'
+      arch.write("</td>")
+      return (t)
+def t_APERTURA_ITEMIZEDLIST(t):
+      r'<itemizedlist>'
+      arch.write("<ul>")
+      return (t)
+def t_CIERRE_ITEMIZEDLIST(t):
+      r'</itemizedlist>'
+      arch.write("</ul>")
+      return (t)
+def t_APERTURA_LISTITEM(t):
+      r'<listitem>'
+      arch.write("<il>")
+      return (t)
+def t_CIERRE_LISTITEM(t):
+      r'</listitem>'
+      arch.write("</il>")
+      return (t)
 lexer = lex.lex()
 contador = 0
