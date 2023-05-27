@@ -39,7 +39,7 @@ elif op == "2":                                       #ingreso por archivo
                         if not tok:break
                         print(tok)
                   cambio = ruta.replace(".xml","")
-                  os.rename("src/html_generados/archivo.html",f"src/{cambio}.html" )
+                  os.rename("src/html_generados/archivo.html",f"src/html_generados/{cambio}.html" )
       else:
             print("numero invalido")
 else:
