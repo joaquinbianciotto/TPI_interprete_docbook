@@ -71,15 +71,15 @@ t_APERTURA_TGROUP = r'<tgroup>'
 t_CIERRE_TGROUP = r'</tgroup>'
 t_APERTURA_THEAD = r'<thead>'
 t_CIERRE_THEAD = r'</thead>'
-t_APERTURA_TFOOD = r'<tfood>'
-t_CIERRE_TFOOD = r'</tfood>'
+t_APERTURA_TFOOT = r'<tfood>'
+t_CIERRE_TFOOT = r'</tfood>'
 t_APERTURA_TBODY = r'<tbody>'
 t_CIERRE_TBODY = r'<tbody>'
 t_APERTURA_ENTRYTBL = r'<entrytbl>'
 t_CIERRE_ENTRYTBL = r'</entrytbl>'
 
 
-arch= open("src/archivo.html","w",encoding="utf-8")
+arch= open("src/html_generados/archivo.html","w",encoding="utf-8")
 
 #funciones
 def t_DT1(t):
@@ -91,7 +91,7 @@ def t_TEXTO (t):
     return (t)
 def t_error(t):
       
-	print ("caracter ilegal %s" % t.value[0])
+	#print ("caracter ilegal %s" % t.value[0])
 	t.lexer.skip(1)
 def t_APERTURA_PARA(t):
       r'<para>'
@@ -125,16 +125,16 @@ def t_CIERRE_IMPORTANT(t):
       r'</important>'
       arch.write('</div>')
       return(t)
-def t_APERTURA_IMAGEDATA (t):
-      r'<imagedata = fileref="^(https|ftp|http|ftps):\/\/([^\s\/$.?#]+\.[^\s\/$.?#]+)(:\d+)?(\/[^\s$?#]*)?(#[^\s]*)?$">'
-      return(t)
-def t_APERTURA_VIDEODATA (t):
-      r'<videodata= fileref="^(https|ftp|http|ftps):\/\/([^\s\/$.?#]+\.[^\s\/$.?#]+)(:\d+)?(\/[^\s$?#]*)?(#[^\s]*)?$">'
-      return(t)
-def t_APERTURA_LINK (t):
-      r'link = xlink:href ="^(https|ftp|http|ftps):\/\/([^\s\/$.?#]+\.[^\s\/$.?#]+)(:\d+)?(\/[^\s$?#]*)?(#[^\s]*)?$"'
-      arch.write(f'<a href="{t.value}">esto es un link</a>')
-      return (t)
+#def t_APERTURA_IMAGEDATA (t):
+      #r'<imagedata = fileref="^(https|ftp|http|ftps):\/\/([^\s\/$.?#]+\.[^\s\/$.?#]+)(:\d+)?(\/[^\s$?#]*)?(#[^\s]*)?$">'
+      #return(t)
+#def t_APERTURA_VIDEODATA (t):
+      #r'<videodata= fileref="^(https|ftp|http|ftps):\/\/([^\s\/$.?#]+\.[^\s\/$.?#]+)(:\d+)?(\/[^\s$?#]*)?(#[^\s]*)?$">'
+      #return(t)
+#def t_APERTURA_LINK (t):
+      #r'link = xlink:href ="^(https|ftp|http|ftps):\/\/([^\s\/$.?#]+\.[^\s\/$.?#]+)(:\d+)?(\/[^\s$?#]*)?(#[^\s]*)?$?"'
+      #arch.write(f'<a href="{t.value}">esto es un link</a>')
+      #return (t)
 def t_APERTURA_INFORMALTABLE(t):
       r'<informaltable>'
       arch.write("<table>")

@@ -29,9 +29,9 @@ elif op == "2":                                       #ingreso por archivo
       print("elegi el archivo")
       op2 = input()
       if int(op2) <= n:
-            ruta = ficheros[n-1]
+            ruta = ficheros[int(op2)-1]
             with open(f"prueba/{ruta}","r",encoding="utf-8") as maestro: #esto ya funciona para cualquier fichero en prueba/
-                  print("hola abri el archivo jejej")
+                  print(f"hola abri el archivo: {ruta}")
                   lexer.input(maestro.read())               
                   while True:
                         tok = lexer.token()
@@ -39,7 +39,7 @@ elif op == "2":                                       #ingreso por archivo
                         if not tok:break
                         print(tok)
                   cambio = ruta.replace(".xml","")
-                  os.rename("src/archivo.html",f"src/{cambio}.html" )
+                  os.rename("src/html_generados/archivo.html",f"src/{cambio}.html" )
       else:
             print("numero invalido")
 else:
