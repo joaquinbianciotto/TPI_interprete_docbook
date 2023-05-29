@@ -32,15 +32,15 @@
         <title> Las 3 entregas parciales del tpi son las siguiente: </title>
         
         <itemizedlist>
-            <lisitem>
+            <listitem>
                 <para>1er entrega: Documentacia del proyecto y la gramatica a generar, <emphasis> el 23 de abril </emphasis> </para>
             </listitem>
 
-            <lisitem>
+            <listitem>
                 <para>2da entrega: Presentacion del lexer que reconozca los tokens del leguaje, <emphasis> el 4 de junio </emphasis> </para>
             </listitem>
 
-            <lisitem>
+            <listitem>
                 <para>3er entrega (entrega final): presentacion del tpi completo, lexer y parse, incluyendo toda la presentacion del tpi antes de la clase con una exposicion hora de no menos de 20 minutos <emphasis> el 2 junio  </emphasis> </para>
             </listitem>
         </itemizedlist>
