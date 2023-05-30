@@ -36,6 +36,7 @@
     + [2.1 Biblioteca PLY](#ply)
       + [2.1.1 Definición de tokens](#tokens)
       + [2.1.2 Expresiones regulares](#expresiones)
+      + [2.1.3 Funciones](#funciones)
 
 # 1. INTRODUCCION: <a name="introduccion"></a>
   Un analizador léxico (o *lexer*) es una parte esencial de un compilador o intérprete que se encarga de descomponer el código fuente en una secuencia de elementos más pequeños llamados *tokens*. Estos tokens son unidades léxicas que representan los componentes individuales del lenguaje de programación, como palabras clave, identificadores, operadores, números y símbolos.
@@ -133,3 +134,19 @@ Para esto, lo importaremos, de la siguiente forma:
     t_CIERRE_TBODY = r'<tbody>'
     t_APERTURA_ENTRYTBL = r'<entrytbl>'
     t_CIERRE_ENTRYTBL = r'</entrytbl>'
+
+# 2.1.3 Funciones: <a name="funciones"></a>
+Definimos una función t_ignore que especifica los caracteres que deben ser ignorados por el lexer, como espacios en blanco o tabulaciones.
+
+    t_ignore = ' \t'
+
+Definimos una función t_error que maneja los errores de caracteres no reconocidos.
+
+    def t_error(t):
+      print("caracter ilegal %s" % t.value[0])
+      t.lexer.skip(1)
+      
+Creamos el lexer llamando a la función lex.lex(). Esto inicializa el lexer con las reglas y funciones definidas previamente.
+
+    lexer = lex.lex()
+    
