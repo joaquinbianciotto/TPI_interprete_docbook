@@ -38,6 +38,9 @@
       + [2.1.2 Expresiones regulares](#expresiones)
       + [2.1.3 Funciones](#funciones)
     + [2.2 Conversión a HTML](#html) - (En proceso)
+    + [2.3 Implementación](#implementacion)
+      + [2.3.1 Ingreso manual](#manual)
+      + [2.3.2 Ingreso por archivo](#archivo)
 
 # 1. INTRODUCCION: <a name="introduccion"></a>
   Un analizador léxico (o *lexer*) es una parte esencial de un compilador o intérprete que se encarga de descomponer el código fuente en una secuencia de elementos más pequeños llamados *tokens*. Estos tokens son unidades léxicas que representan los componentes individuales del lenguaje de programación, como palabras clave, identificadores, operadores, números y símbolos.
@@ -156,7 +159,7 @@ Creamos el lexer llamando a la función lex.lex(). Esto inicializa el lexer con 
 # 2.2 Conversión a HTML: (En proceso) <a name="html"></a>
 Otra de las funcionalidades que tiene nuestro trabajo es la de traducir el documento, generando un archivo de texto HTML ,transformando algunas etiquetas (XML) en etiquetas HTML.
 
-Funciones de conversión
+Funciones de conversión:
 
     def t_DT1(t):
           r'<[!]DOCTYPE\sarticle>'
@@ -237,3 +240,58 @@ Funciones de conversión
           r'</listitem>'
           arch.write("</il>")
           return (t)
+
+# 2.3 Implementación: <a name="implementacion"></a>
+Ahora podemos utilizar el Lexer creado para analizar texto.
+
+Para esto, lo primero que debemos hacer es importar nuestro lexer:
+
+    from lexer import lexer
+
+Y vamos a darle al usuario la opción de elegir si desea ingresar datos manualmente o si desea analizar un archivo de prueba:
+
+    print ("Hola este es el analizador Lexico")
+    print ("Ingrese 1 si quiere ingresar datos a mano y 2 si quiere desde un archivo de prueba \n")
+    op = input()
+
+# 2.3.1 Ingreso manual: <a name="manual"></a>
+
+    if op == "1":
+          print("ingrese lo que quiere analizar")
+          cadena = input()    
+          lexer.input(cadena)
+          while True:
+                tok = lexer.token()
+
+                if not tok : break
+                print (tok)
+
+# 2.3.2 Ingreso por archivo: (En proceso) <a name="archivo"></a>
+
+    elif op == "2":
+          print("todavia no esta listo")
+          n = 0
+
+          ejemplo_dir = 'prueba/'                   #elegir el archivo
+          with os.scandir(ejemplo_dir) as ficheros:
+                ficheros = [fichero.name for fichero in ficheros if fichero.is_file()]    #ficheros es una lista con los archivos de la carpeta prueba
+          for i in ficheros:
+
+                print(f"{n+1}: {ficheros[n]}")
+                n +=1
+          print("elegi el archivo")
+          op2 = input()
+          if int(op2) <= n:
+                ruta = ficheros[int(op2)-1]
+                with open(f"prueba/{ruta}","r",encoding="utf-8") as maestro:
+                      print(f"hola abri el archivo: {ruta}")
+                      lexer.input(maestro.read())               
+                      while True:
+                            tok = lexer.token()
+
+                            if not tok:break
+                            print(tok)
+                      cambio = ruta.replace(".xml","")
+                      os.rename("src/html_generados/archivo.html",f"src/html_generados/{cambio}.html" )
+          else:
+                print("numero invalido")
