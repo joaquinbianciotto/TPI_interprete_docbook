@@ -27,13 +27,13 @@
   
   **FACULTAD REGIONAL RESISTENCIA**
   
-  **Fecha y Lugar de presentación:** 30/04/2023. Resistencia, Chaco
+  **Fecha y Lugar de presentación:** 30/04/2023. Resistencia, Chaco  
   
   &nbsp;  
   
-### Documentación del trabajo
+## Documentación del trabajo
   
-   - [Gramática](https://github.com/joaquinbianciotto/TPI_interprete_docbook/blob/doc/doc/DOC%20-%20Gramatíca.md)
+   - ###[Gramática](https://github.com/joaquinbianciotto/TPI_interprete_docbook/blob/doc/doc/DOC%20-%20Gramatíca.md)
     
-   - Lexer
+   - ###Lexer
 
