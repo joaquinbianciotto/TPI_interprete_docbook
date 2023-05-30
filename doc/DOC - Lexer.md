@@ -153,4 +153,87 @@ Creamos el lexer llamando a la función lex.lex(). Esto inicializa el lexer con 
 
     lexer = lex.lex()
     
-# 2.2 Conversión a HTML: <a name="html"></a>
+# 2.2 Conversión a HTML: (En proceso) <a name="html"></a>
+Otra de las funcionalidades que tiene nuestro trabajo es la de traducir el documento, generando un archivo de texto HTML ,transformando algunas etiquetas (XML) en etiquetas HTML.
+
+Funciones de conversión
+
+    def t_DT1(t):
+          r'<[!]DOCTYPE\sarticle>'
+          arch.write("<!DOCTYPE html>")
+    def t_TEXTO (t):
+        r'[a-zA-Z][a-zA-Z0-9]*'  #falta ver caracteres especiales
+        arch.write(f'{t.value} ')
+        return (t)
+    def t_APERTURA_PARA(t):
+          r'<para>'
+          arch.write("<p>")
+          return(t)
+    def t_CIERRE_PARA(t):
+          r'</para>'
+          arch.write("</p>")
+          return(t)
+    def t_APERTURA_TITLE(t):
+          r'<title>'
+          arch.write("<h1>")
+          return(t)
+    def t_CIERRE_TITLE(t):
+          r'</title>'
+          arch.write("</h1>")
+          return(t)
+    def t_APERTURA_INFO(t):
+          r'<info>'
+          arch.write('<div style="color:white;background-color:green;font-size:8pts"><p>')
+          return(t)
+    def t_CIERRE_INFO(t):
+          r'</info>'
+          arch.write('</p></div>')
+          return(t)
+    def t_APERTURA_IMPORTANT(t):
+          r'<important>'
+          arch.write('<div style="background-color:red;color:white">')
+          return(t)
+    def t_CIERRE_IMPORTANT(t):
+          r'</important>'
+          arch.write('</div>')
+          return(t)
+    def t_APERTURA_INFORMALTABLE(t):
+          r'<informaltable>'
+          arch.write("<table>")
+          return (t)
+    def t_CIERRE_INFORMALTABLE(t):
+          r'</informaltable>'
+          arch.write("</table>")
+          return (t)
+    def t_APERTURA_ROW(t): 
+          r'<row>'
+          arch.write("<tr>")
+          return (t)
+    def t_CIERRE_ROW(t):
+          r'</row>'
+          arch.write("</tr>")
+          return (t)
+    def t_APERTURA_ENTRY(t): 
+          r'<entry>'
+          arch.write("<td>")
+          return (t)
+    def t_CIERRE_ENTRY(t): 
+          r'</entry>'
+          arch.write("</td>")
+          return (t)
+    def t_APERTURA_ITEMIZEDLIST(t):
+          r'<itemizedlist>'
+          arch.write("<ul>")
+          return (t)
+    def t_CIERRE_ITEMIZEDLIST(t):
+          r'</itemizedlist>'
+          arch.write("</ul>")
+          return (t)
+    def t_APERTURA_LISTITEM(t):
+          r'<listitem>'
+          arch.write("<il>")
+          return (t)
+    def t_CIERRE_LISTITEM(t):
+          r'</listitem>'
+          arch.write("</il>")
+          return (t)
