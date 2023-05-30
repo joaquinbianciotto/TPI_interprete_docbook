@@ -27,7 +27,7 @@
   
   **FACULTAD REGIONAL RESISTENCIA**
   
-  **Fecha y Lugar de presentación:** 04/05/2023. Resistencia, Chaco  
+  **Fecha y Lugar de presentación:** 04/06/2023. Resistencia, Chaco  
   
   &nbsp;  
   
