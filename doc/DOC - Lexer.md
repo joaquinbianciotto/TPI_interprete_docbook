@@ -63,6 +63,8 @@ Para esto, lo importaremos, de la siguiente forma:
 
     import ply.lex as lex
 
+Una vez importado el módulo de análisis léxico, debemos definir los tokens, expresiones regulares y las funciones que nuestro Lexer debe tener en cuenta.
+
 # 2.1.1 Definición de tokens: <a name="tokens"></a>
 
     tokens = [ 'DT1','DT2','APERTURA_ARTICLE', 'CIERRE_ARTICLE' , 'APERTURA_PARA', 'CIERRE_PARA', 'TEXTO', 
