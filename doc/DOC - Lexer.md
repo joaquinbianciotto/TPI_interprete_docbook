@@ -269,7 +269,6 @@ Y vamos a darle al usuario la opción de elegir si desea ingresar datos manualme
 # 2.3.2 Ingreso por archivo: (En proceso) <a name="archivo"></a>
 
     elif op == "2":
-          print("todavia no esta listo")
           n = 0
 
           ejemplo_dir = 'prueba/'                   #elegir el archivo
