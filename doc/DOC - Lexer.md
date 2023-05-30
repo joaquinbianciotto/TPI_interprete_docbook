@@ -49,3 +49,7 @@ Para la realización de este trabajo, optamos por utilizar **Python** debido a l
  +	**Amplia disponibilidad de bibliotecas y módulos:** Python cuenta con una gran cantidad de bibliotecas y módulos disponibles que facilitan la tarea de implementar funcionalidades avanzadas.
 
 Llevamos a cabo el proyecto en una plataforma web de desarrollo colaborativo llamada **GitHub**, esta proporciona control automático de versiones, lo que permite realizar un seguimiento de los cambios realizados en el proyecto a lo largo del tiempo, facilita la colaboración en equipo, ofrece herramientas de seguimiento de problemas y solicitudes de extracción.
+
+# 2. LEXER: <a name="lexer"></a>
+
+# 2.1 Biblioteca PLY: <a name="ply"></a>
