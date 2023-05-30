@@ -32,9 +32,7 @@
 
 # Documentación del trabajo
   
-   - Gramática 
+   - [Gramática](https://github.com/joaquinbianciotto/TPI_interprete_docbook/blob/doc/doc/DOC%20-%20Gramatíca.md)
     
    - Lexer
-
-This is [an example](http://example.com/ "Title") inline link.
 
