@@ -37,6 +37,7 @@
       + [2.1.1 Definición de tokens](#tokens)
       + [2.1.2 Expresiones regulares](#expresiones)
       + [2.1.3 Funciones](#funciones)
+    + [2.2 Conversión a HTML](#html)
 
 # 1. INTRODUCCION: <a name="introduccion"></a>
   Un analizador léxico (o *lexer*) es una parte esencial de un compilador o intérprete que se encarga de descomponer el código fuente en una secuencia de elementos más pequeños llamados *tokens*. Estos tokens son unidades léxicas que representan los componentes individuales del lenguaje de programación, como palabras clave, identificadores, operadores, números y símbolos.
@@ -150,3 +151,4 @@ Creamos el lexer llamando a la función lex.lex(). Esto inicializa el lexer con 
 
     lexer = lex.lex()
     
+# 2.2 Conversión a HTML: <a name="html"></a>
