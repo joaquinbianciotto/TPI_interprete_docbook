@@ -29,9 +29,9 @@
   
   **Fecha y Lugar de presentación:** 30/04/2023. Resistencia, Chaco
 
+  
 
-
-
+  
 
 ### Documentación del trabajo
   
