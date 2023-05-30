@@ -34,8 +34,8 @@
   + [1. INTRODUCCION](#introduccion)
   + [2. LEXER](#lexer)
     + [2.1 Biblioteca PLY](#ply)
-      + [2.2 Definición de tokens](#tokens)
-      + [2.3 Expresiones regulares](#expresiones)
+      + [2.1.1 Definición de tokens](#tokens)
+      + [2.1.2 Expresiones regulares](#expresiones)
 
 # 1. INTRODUCCION: <a name="introduccion"></a>
   Un analizador léxico (o *lexer*) es una parte esencial de un compilador o intérprete que se encarga de descomponer el código fuente en una secuencia de elementos más pequeños llamados *tokens*. Estos tokens son unidades léxicas que representan los componentes individuales del lenguaje de programación, como palabras clave, identificadores, operadores, números y símbolos.
@@ -61,4 +61,4 @@ Para esto, lo importaremos, de la siguiente forma:
 
     import ply.lex as lex
 
-# 2.1 Biblioteca PLY: <a name="ply"></a>
+# 2.1.1 Definición de tokens: <a name="tokens"></a>
