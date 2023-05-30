@@ -54,3 +54,9 @@ Llevamos a cabo el proyecto en una plataforma web de desarrollo colaborativo lla
 
 # 2.1 Biblioteca PLY: <a name="ply"></a>
 PLY (Python Lex-Yacc) es una biblioteca de análisis léxico y sintáctico. Proporciona las herramientas necesarias para construir analizadores personalizados basados en las técnicas de análisis léxico y sintáctico LEX y YACC utilizadas tradicionalmente en otros lenguajes. Sin embargo, a diferencia de LEX y YACC, que están escritos en C, PLY está escrito en Python y aprovecha las características del lenguaje y la facilidad de uso que ofrece.
+
+Nosotros utilizaremos el módulo 'ply.lex', el cual proporciona herramientas necesarias para definir y ejecutar reglas de análisis léxico, es decir, para reconocer tokens en un flujo de texto.
+
+Para esto, lo importaremos, de la siguiente forma:
+
+    import ply.lex as lex
