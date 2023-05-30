@@ -53,3 +53,4 @@ Llevamos a cabo el proyecto en una plataforma web de desarrollo colaborativo lla
 # 2. LEXER: <a name="lexer"></a>
 
 # 2.1 Biblioteca PLY: <a name="ply"></a>
+PLY (Python Lex-Yacc) es una biblioteca de análisis léxico y sintáctico. Proporciona las herramientas necesarias para construir analizadores personalizados basados en las técnicas de análisis léxico y sintáctico LEX y YACC utilizadas tradicionalmente en otros lenguajes. Sin embargo, a diferencia de LEX y YACC, que están escritos en C, PLY está escrito en Python y aprovecha las características del lenguaje y la facilidad de uso que ofrece.
