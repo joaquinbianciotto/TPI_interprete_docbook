@@ -125,16 +125,16 @@ def t_CIERRE_IMPORTANT(t):
       r'</important>'
       arch.write('</div>')
       return(t)
-#def t_APERTURA_IMAGEDATA (t):
-      #r'<imagedata = fileref="^(https|ftp|http|ftps):\/\/([^\s\/$.?#]+\.[^\s\/$.?#]+)(:\d+)?(\/[^\s$?#]*)?(#[^\s]*)?$">'
-      #return(t)
-#def t_APERTURA_VIDEODATA (t):
-      #r'<videodata= fileref="^(https|ftp|http|ftps):\/\/([^\s\/$.?#]+\.[^\s\/$.?#]+)(:\d+)?(\/[^\s$?#]*)?(#[^\s]*)?$">'
-      #return(t)
-#def t_APERTURA_LINK (t):
-      #r'link = xlink:href ="^(https|ftp|http|ftps):\/\/([^\s\/$.?#]+\.[^\s\/$.?#]+)(:\d+)?(\/[^\s$?#]*)?(#[^\s]*)?$?"'
-      #arch.write(f'<a href="{t.value}">esto es un link</a>')
-      #return (t)
+def t_APERTURA_IMAGEDATA (t):
+      r'<imagedata=fileref=""^(http|https|ftp)\://[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(:[a-zA-Z0-9 ]*)?/?([a-zA-Z0-9\-\._\?\,\'/\\\+&%\$#\=~])*$">'
+      return(t)
+def t_APERTURA_VIDEODATA (t):
+      r'<videodata=fileref="^(http|https|ftp)\://[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(:[a-zA-Z0-9 ]*)?/?([a-zA-Z0-9\-\._\?\,\'/\\\+&%\$#\=~])*$">'
+      return(t)
+def t_APERTURA_LINK (t):
+      r'link = xlink:href ="^(http|https|ftp)\://[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(:[a-zA-Z0-9 ]*)?/?([a-zA-Z0-9\-\._\?\,\'/\\\+&%\$#\=~])*$">'
+      arch.write(f'<a href="{t.value}">esto es un link</a>')
+      return (t)
 def t_APERTURA_INFORMALTABLE(t):
       r'<informaltable>'
       arch.write("<table>")
