@@ -4,7 +4,7 @@ import sys
 print ("Hola este es el analizador Lexico")
 print ("Ingrese 1 si quiere ingresar datos a mano y 2 si quiere desde un archivo de prueba \n")
 op = input()
-
+errores = []
 if op == "1":                                               #ingreso manual
       print("ingrese lo que quiere analizar")
       cadena = input()    
@@ -41,12 +41,15 @@ elif op == "2":                                       #ingreso por archivo
                         tok = lexer.token()
                         
                         if not tok:break
-                        if tok.type == "ERROR_1":
-                              print(f"error lexico en linea {tok.lineno}")
+                        if tok.type == "error":
+                              errores.append(tok.value)
+                        if tok.type == "ERROR_1" or tok.type == "ERROR_2":
+                              print(f"error lexico en linea {tok.lineno} ({tok.value})")
                         else:
                               print(tok)
                   cambio = ruta.replace(".xml","")
                   os.rename("src/html_generados/archivo.html",f"src/html_generados/{cambio}.html" )
+                  print(errores)
       else:
             print("numero invalido")
 else:
