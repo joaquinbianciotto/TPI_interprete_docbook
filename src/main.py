@@ -43,13 +43,13 @@ elif op == "2":                                       #ingreso por archivo
                         if not tok:break
                         if tok.type == "error":
                               errores.append(tok.value)
-                        if tok.type == "ERROR_1" or tok.type == "ERROR_2":
+                        if tok.type == "ERROR_1" or tok.type == "ERROR_2" or tok.type == "ERROR_3":
                               print(f"error lexico en linea {tok.lineno} ({tok.value})")
                         else:
                               print(tok)
                   cambio = ruta.replace(".xml","")
                   os.rename("src/html_generados/archivo.html",f"src/html_generados/{cambio}.html" )
-                  print(errores)
+            
       else:
             print("numero invalido")
 else:
