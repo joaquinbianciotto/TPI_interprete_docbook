@@ -19,7 +19,7 @@ tokens = [ 'DT1','DT2','APERTURA_ARTICLE', 'CIERRE_ARTICLE' , 'APERTURA_PARA', '
           'CIERRE_VIDEOOBJECT' , 'APERTURA_IMAGENOBJECT' , 'CIERRE_IMAGENOBJECT' , 'APERTURA_VIDEODATA', 'APERTURA_LISTITEM' ,
           'CIERRE_LISTITEM' , 'APERTURA_TGROUP' , 'CIERRE_TGROUP' , 'APERTURA_THEAD' , 'CIERRE_THEAD' , 'APERTURA_TFOOT' ,
           'CIERRE_TFOOT' , 'APERTURA_TBODY' , 'CIERRE_TBODY' , 'APERTURA_ROW' , 'CIERRE_ROW' , 'APERTURA_ENTRY' ,
-          'CIERRE_ENTRY' , 'APERTURA_ENTRYTBL' , 'CIERRE_ENTRYTBL'
+          'CIERRE_ENTRY' , 'APERTURA_ENTRYTBL' , 'CIERRE_ENTRYTBL','ERROR_1','ERROR_2','newline'
 		]
 
 t_ignore = '\t '   #nose que hace pero vi en varios, creo q ignora espacios en blanco o tabulacion
@@ -77,11 +77,15 @@ t_APERTURA_TBODY = r'<tbody>'
 t_CIERRE_TBODY = r'<tbody>'
 t_APERTURA_ENTRYTBL = r'<entrytbl>'
 t_CIERRE_ENTRYTBL = r'</entrytbl>'
-
+t_ERROR_1 = r'<[\w]+>'
+t_ERROR_2 = r'<[\w]+\s[\w]+=*[\w"]+\s*/*>'
 
 arch= open("src/html_generados/archivo.html","w",encoding="utf-8")
 
 #funciones
+def t_newline(t):
+    r'\n+'
+    t.lexer.lineno += len(t.value)
 def t_DT1(t):
       r'<[!]DOCTYPE\sarticle>'
       arch.write("<!DOCTYPE html>")
@@ -132,7 +136,7 @@ def t_APERTURA_VIDEODATA (t):
       r'<videodata=fileref="^(http|https|ftp)\://[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(:[a-zA-Z0-9 ]*)?/?([a-zA-Z0-9\-\._\?\,\'/\\\+&%\$#\=~])*$">'
       return(t)
 def t_APERTURA_LINK (t):
-      r'link = xlink:href ="^(http|https|ftp)\://[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(:[a-zA-Z0-9 ]*)?/?([a-zA-Z0-9\-\._\?\,\'/\\\+&%\$#\=~])*$">'
+      r'<link = xlink:href ="^(http|https|ftp)\://[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(:[a-zA-Z0-9 ]*)?/?([a-zA-Z0-9\-\._\?\,\'/\\\+&%\$#\=~])*$">'
       arch.write(f'<a href="{t.value}">esto es un link</a>')
       return (t)
 def t_APERTURA_INFORMALTABLE(t):
@@ -175,5 +179,5 @@ def t_CIERRE_LISTITEM(t):
       r'</listitem>'
       arch.write("</il>")
       return (t)
+
 lexer = lex.lex()
-contador = 0

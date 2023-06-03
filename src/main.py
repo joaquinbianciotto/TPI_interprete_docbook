@@ -21,7 +21,11 @@ elif op == "2":                                       #ingreso por archivo
       
       ejemplo_dir = 'prueba/'                   #elegir el archivo
       with os.scandir(ejemplo_dir) as ficheros:
+            print(type(ficheros))
             ficheros = [fichero.name for fichero in ficheros if fichero.is_file()]    #ficheros es una lista con los archivos de la carpeta prueba
+      for j in ficheros:
+            if ".txt" in j:
+                  ficheros.remove(f"{j}")
       for i in ficheros:
             
             print(f"{n+1}: {ficheros[n]}")
@@ -35,9 +39,12 @@ elif op == "2":                                       #ingreso por archivo
                   lexer.input(maestro.read())               
                   while True:
                         tok = lexer.token()
-    
+                        
                         if not tok:break
-                        print(tok)
+                        if tok.type == "ERROR_1":
+                              print(f"error lexico en linea {tok.lineno}")
+                        else:
+                              print(tok)
                   cambio = ruta.replace(".xml","")
                   os.rename("src/html_generados/archivo.html",f"src/html_generados/{cambio}.html" )
       else:
