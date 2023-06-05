@@ -1,6 +1,7 @@
 from lexer import lexer
 import os
 import sys
+from lexer import arch
 def borrarPantalla(): #Borra lo ya escrito en pantalla
       if os.name == "posix":
             os.system ("clear")
@@ -61,9 +62,21 @@ elif op == "2":                                       #ingreso por archivo
                         else:
                               print(tok)
                   cambio = ruta.replace(".xml","")
+                  arch.close()
+                  with os.scandir('src/html_generados/') as htmls:
+                        for k in htmls:
+                              if k.name == f"{cambio}.html":
+                                    os.remove(f"src/html_generados/{cambio}.html")
                   os.rename("src/html_generados/archivo.html",f"src/html_generados/{cambio}.html" )
-            
+                  os.system("pause")
       else:
             print("numero invalido")
+            os.system("pause")
 else:
       print("volve a empezar")
+      os.system("pause")
+
+
+
+
+
