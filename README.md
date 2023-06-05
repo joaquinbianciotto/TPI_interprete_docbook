@@ -29,13 +29,3 @@
   
   **Fecha y Lugar de presentación:** 04/06/2023. Resistencia, Chaco  
   
-  &nbsp;  
-  
-## Documentación del trabajo
-  
-   - [Gramática](https://github.com/joaquinbianciotto/TPI_interprete_docbook/blob/doc/doc/DOC%20-%20Gramatíca.md)
-    
-   - [Análisis Léxico](https://github.com/joaquinbianciotto/TPI_interprete_docbook/blob/doc/doc/DOC%20-%20Lexer.md)
-
-     - [Conversión a HTML](https://github.com/joaquinbianciotto/TPI_interprete_docbook/blob/doc/doc/DOC%20-%20Lexer.md#html)
-
