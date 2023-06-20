@@ -96,11 +96,10 @@ def t_DT1(t):
       r'<[!]DOCTYPE\sarticle>'
       arch.write("<!DOCTYPE html>")
 def t_TEXTO (t):
-    r'[\w._%+?¿¡!()"|°¬$&={}\#@*-]+'  #falta ver caraxteres especiales
+    r'[\w.,:;_%/+?¿¡!()"\'_|°¬~$&=^`{}\#@*\-,\[\]\\]+'  #falta ver caraxteres especiales
     arch.write(f'{t.value} ')
     return (t)
 def t_error(t):
-        
 	print ("caracter ilegal %s" % t.value[0])
 	t.lexer.skip(1)
 def t_APERTURA_PARA(t):
@@ -136,7 +135,7 @@ def t_CIERRE_IMPORTANT(t):
       arch.write('</div>')
       return(t)
 def t_APERTURA_IMAGEDATA (t):
-      r'<imagedata\s+fileref=""[(http(s)?|ftp(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)"\s*[/]>'
+      r'<imagedata\s+fileref="[(http(s)?|ftp(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)"\s*[/]>'
       return(t)
 def t_APERTURA_VIDEODATA (t):
       r'<videodata\s+fileref="[(http(s)?|ftp(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)"\s*[/]>'
