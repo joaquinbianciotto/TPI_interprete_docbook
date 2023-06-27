@@ -1,7 +1,6 @@
 <!DOCTYPE article>
 <article>
-
-<info> holaa </info>
+<info><title>  hola mundo  </title></info>
 <title> yoel </title>
-<important> ja </important>
+<important><comment> ja </comment></important>
 </article>

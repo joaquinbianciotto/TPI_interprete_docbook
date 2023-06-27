@@ -2,8 +2,7 @@
 <article>
     <title>Archivo de prueba sobre tablas </title>
 
-    <abstract>
-            <para>Se vera a continuacion una tabla de puntos sobre del top 5 de la liga de futbol argentino <emphasis> campeonatado 2023 </emphasis>, a modo de demostracion </para>
+    <abstract><para>Se vera a continuacion una tabla de puntos sobre del top 5 de la liga de futbol argentino <emphasis> campeonatado 2023 </emphasis>, a modo de demostracion </para>
     </abstract>
 
     <informaltable>
@@ -13,6 +12,7 @@
                     <entry>
                         <important>
                             <title> CAMPEONATO ARGENTINO 2023 </title>
+                            <comment>prueba</comment>
                         </important>
                     </entry>
                 </row>
@@ -22,7 +22,7 @@
                     <entry> 
                         <important>
                             <title> EQUIPO </title>
-                            <title> PUNTOS </title>
+                            <comment>prueba2</comment>
                         </important>
                     </entry>
                 </row>
@@ -63,4 +63,4 @@
     <section>
         <para> final del archivo de prueba de tablas </para>
     </section>
-</archivo>
+</article>
