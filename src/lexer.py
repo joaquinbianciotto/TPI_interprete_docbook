@@ -3,7 +3,6 @@ import re
 import codecs
 import os
 import sys
-error_caracter_ilegal=[]
 
 tokens = [ 'DT1', 'APERTURA_ARTICLE', 'CIERRE_ARTICLE' , 'APERTURA_PARA', 'CIERRE_PARA', 'TEXTO', 
           'APERTURA_INFO' , 'CIERRE_INFO' , 'APERTURA_TITLE' , 'CIERRE_TITLE' , 'APERTURA_ITEMIZEDLIST',
@@ -24,8 +23,8 @@ tokens = [ 'DT1', 'APERTURA_ARTICLE', 'CIERRE_ARTICLE' , 'APERTURA_PARA', 'CIERR
 		]
 
 t_ignore = '\t '   #nose que hace pero vi en varios, creo q ignora espacios en blanco o tabulacion
-
-
+H=0
+Tpos = 1
 t_APERTURA_ARTICLE = r'<article>'
 t_CIERRE_ARTICLE = r'</article>'
 t_APERTURA_SIMPARA = r'<simpara>'
@@ -72,12 +71,6 @@ t_APERTURA_IMAGENOBJECT = r'<imagenobject>'
 t_CIERRE_IMAGENOBJECT = r'</imagenobject>'
 t_APERTURA_TGROUP = r'<tgroup>'
 t_CIERRE_TGROUP = r'</tgroup>'
-t_APERTURA_THEAD = r'<thead>'
-t_CIERRE_THEAD = r'</thead>'
-t_APERTURA_TFOOT = r'<tfood>'
-t_CIERRE_TFOOT = r'</tfood>'
-t_APERTURA_TBODY = r'<tbody>'
-t_CIERRE_TBODY = r'</tbody>'
 t_APERTURA_ENTRYTBL = r'<entrytbl>'
 t_CIERRE_ENTRYTBL = r'</entrytbl>'
 t_APERTURA_COPYRIGHT = r'<copyright>'
@@ -96,7 +89,7 @@ def t_DT1(t):
       r'<[!]DOCTYPE\sarticle>'
       arch.write("<!DOCTYPE html>")
 def t_TEXTO (t):
-    r'[\w.,:;_%/+?¿¡!()"\'_|°¬~$&=^`{}\#@*\-,\[\]\\]+'  #falta ver caraxteres especiales
+    r'[\w.,:;_%/+?¿¡!()"\'_|°¬~$&=^`{}\#@*\-,\[\]\\\s]+'  #falta ver caraxteres especiales
     arch.write(f'{t.value} ')
     return (t)
 def t_error(t):
@@ -112,12 +105,23 @@ def t_CIERRE_PARA(t):
       return(t)
 def t_APERTURA_TITLE(t):
       r'<title>'
-      arch.write("<h1>")
+      global H
+      if H == 0:
+            arch.write("<h1>")
+            H +=1
+      else:
+            arch.write("<h2>")
       return(t)
 def t_CIERRE_TITLE(t):
       r'</title>'
-      arch.write("</h1>")
+      global H
+      if H > 0:
+            arch.write("</h1>")
+            H +=1
+      else:
+            arch.write("</h2>")
       return(t)
+
 def t_APERTURA_INFO(t):
       r'<info>'
       arch.write('<div style="color:white;background-color:green;font-size:8pts"><p>')   #anda bien
@@ -152,9 +156,39 @@ def t_CIERRE_INFORMALTABLE(t):
       r'</informaltable>'
       arch.write("</table>")
       return (t)
+def t_APERTURA_THEAD(t):
+      r'<thead>'
+      arch.write("<thead>")
+      global Tpos
+      Tpos = 0                            #Tpos significa "posicion en tabla" si es = 0 es porque estamos en el head
+      return(t)                           #Para canda entry en head necesitamos <th></th>, mientras que para tbody o tfoot
+def t_CIERRE_THEAD(t):                      #se requiere de <td></td>
+      r'</thead>'
+      arch.write("</thead>")
+      return(t)
+def t_APERTURA_TBODY(t):
+      r'<tbody>'
+      arch.write("<tbody>")
+      global Tpos
+      Tpos = 1
+      return(t)
+def t_CIERRE_TBODY(t):
+      r'</tbody>'
+      arch.write("</tbody>")
+      return(t)
+def t_APERTURA_TFOOT(t):
+      r'<tfood>'
+      global Tpos
+      Tpos=1
+      arch.write("<tfood>")
+      return(t)
+def t_CIERRE_TFOOT(t):
+      r'</tfood>'
+      arch.write("</tfood>")
+      return(t)
 def t_APERTURA_ROW(t):                                #un problema con esto es que en html todos son tr y se diferencian adentro usando 
       r'<row>'                                        #<th></th> para los encabezados y pies de la tabla
-      arch.write("<tr>")
+      arch.write("</tr>")
       return (t)
 def t_CIERRE_ROW(t):
       r'</row>'
@@ -162,11 +196,19 @@ def t_CIERRE_ROW(t):
       return (t)
 def t_APERTURA_ENTRY(t): 
       r'<entry>'
-      arch.write("<td>")
+      global Tpos
+      if Tpos == 0:
+            arch.write("<th>")
+      elif Tpos == 1:
+            arch.write("<td>")
       return (t)
 def t_CIERRE_ENTRY(t): 
       r'</entry>'
-      arch.write("</td>")
+      global Tpos
+      if Tpos == 0:
+            arch.write("</th>")
+      elif Tpos == 1:
+            arch.write("</td>")
       return (t)
 def t_APERTURA_ITEMIZEDLIST(t):
       r'<itemizedlist>'
