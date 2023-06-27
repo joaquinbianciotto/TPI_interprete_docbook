@@ -1,4 +1,5 @@
 from lexer import lexer
+from parser1 import parser
 import os
 import sys
 from lexer import arch
@@ -11,6 +12,7 @@ print ("Hola este es el analizador Lexico")
 print ("1 para ingresar datos a mano\n2 si quiere cargar datos desde un archivo\n")
 op = input()
 errores = []
+lexico = 0
 if op == "1":                                               #ingreso manual
       borrarPantalla()
       while True: #ciclo para ingresar datos hasta que eleccion sea 0
@@ -59,10 +61,20 @@ elif op == "2":                                       #ingreso por archivo
                               errores.append(tok.value)
                         if tok.type == "ERROR_1" or tok.type == "ERROR_2" or tok.type == "ERROR_3":
                               print(f"error lexico en linea {tok.lineno} ({tok.value})")
-                        else:
-                              print(tok)
+                              lexico = 1
+                        #else:
+                              #print(tok)
                   cambio = ruta.replace(".xml","")
+                  if lexico == 0:
+                        print("Analisis Lexico exitoso")
+                  correcto = 0                     ##nose si va esto 
+                  parser.parse()
+                  from parser1 import correcto
+                  print (correcto)
                   arch.close()
+                  if correcto != 1:
+                        print("Sintaxis perfecta")
+              
                   with os.scandir('src/html_generados/') as htmls:
                         for k in htmls:
                               if k.name == f"{cambio}.html":
