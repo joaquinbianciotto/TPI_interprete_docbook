@@ -1,9 +1,13 @@
-from lexer import lexer
-from parser1 import parser, correcto
+
+from parser1 import parser
 import os
 import sys
 from lexer import arch
-from pruebaLexer import borrarPantalla
+def borrarPantalla(): #Borra lo ya escrito en pantalla
+      if os.name == "posix":
+            os.system ("clear")
+      elif os.name == "ce" or os.name == "nt" or os.name == "dos":
+            os.system ("cls")
 
 print ("Hola este es el analizador Sintactico")
 print ("1 para ingresar datos a mano\n2 si quiere cargar datos desde un archivo\n")
@@ -14,9 +18,11 @@ if op == "1":                                               #ingreso manual
     borrarPantalla()
     while True: #ciclo para ingresar datos hasta que eleccion sea 0
         print("ingrese lo que quiere analizar")
-        cadena = input()    
+        cadena = input()   
         parser.parse(cadena)
-           
+        from parser1 import correcto
+        if correcto == 0:
+            print("sintaxis correcta")
         print("desea continuar?\n1 para continuar\n0 para terminar")
         eleccion = input()
         if eleccion == "0": break
@@ -41,7 +47,9 @@ elif op == "2":                                       #ingreso por archivo
         ruta = ficheros[int(op2)-1]
         with open(f"prueba/{ruta}","r",encoding="utf-8") as maestro: #esto ya funciona para cualquier fichero en prueba/
             parser.parse(maestro.read())
-
+            from parser1 import correcto
+            if correcto == 0:
+                print("sintaxis correcta")
             cambio = ruta.replace(".xml","")
             with os.scandir('src/html_generados/') as htmls:
                 for k in htmls:

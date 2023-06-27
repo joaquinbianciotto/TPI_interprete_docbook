@@ -3,14 +3,15 @@ import os
 import codecs 
 import re
 from lexer import tokens 
-
-
+correcto = 0
+global i
+i = 0
 #vi en otros donde cada no terminal q tenia mas de una produccion, por cada produccion hacian una funcion
 def p_sigma(p):
     ''' sigma : DT1 APERTURA_ARTICLE y x z CIERRE_ARTICLE
         | DT1 APERTURA_ARTICLE y x CIERRE_ARTICLE 
         | DT1 APERTURA_ARTICLE x z CIERRE_ARTICLE
-        | DT1 APERTURA_ARTICLE x CIERRE_ARTICLE''' 
+        | DT1 APERTURA_ARTICLE x CIERRE_ARTICLE'''
 def p_y(p):
     ''' y : info title
         | info 
@@ -60,7 +61,7 @@ def p_a(p):
         | date a 
         | copy a 
         | title a
-        |  mobj 
+        | mobj 
         | abstract 
         | address 
         | author 
@@ -68,7 +69,8 @@ def p_a(p):
         | copy 
         | title'''                         
 def p_abstract(p):
-    ''' abstract : APERTURA_ABSTRACT title b CIERRE_ABSTRACT'''
+    ''' abstract : APERTURA_ABSTRACT title b CIERRE_ABSTRACT
+        | APERTURA_ABSTRACT b CIERRE_ABSTRACT'''
 def p_b(p):
     ''' b : para b 
         | spara b 
@@ -163,7 +165,8 @@ def p_i(p):
         | mobj 
         | inftable'''   
 def p_important(p):
-    ''' important : APERTURA_IMPORTANT title j CIERRE_IMPORTANT'''
+    ''' important : APERTURA_IMPORTANT title j CIERRE_IMPORTANT
+        | APERTURA_IMPORTANT j CIERRE_IMPORTANT'''
 def p_j(p):
     ''' j : itemlist j
         | important j 
@@ -216,7 +219,8 @@ def p_k(p):
 
 #imagenes y multimedia
 def p_mobj(p):
-    ''' mobj : APERTURA_MEDIAOBJECT info l CIERRE_MEDIAOBJECT'''
+    ''' mobj : APERTURA_MEDIAOBJECT info l CIERRE_MEDIAOBJECT
+        | APERTURA_MEDIAOBJECT l CIERRE_MEDIAOBJECT'''
 def p_l(p):
     ''' l : vobj l 
         | iobj l 
@@ -296,6 +300,7 @@ def p_entrytbl(p):
 def p_t(p):
     ''' t : thead tbody 
         | tbody'''
+
 
 
 #error

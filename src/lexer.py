@@ -87,9 +87,10 @@ def t_newline(t):
     t.lexer.lineno += len(t.value)
 def t_DT1(t):
       r'<[!]DOCTYPE\sarticle>'
-      arch.write("<!DOCTYPE html>")
+      arch.write("<!DOCTYPE html>\n")
+      return(t)
 def t_TEXTO (t):
-    r'[\w.,:;_%/+?¿¡!()"\'_|°¬~$&=^`{}\#@*\-,\[\]\\\s]+'  #falta ver caraxteres especiales
+    r'[\w.,:;_%/+?¿¡!()"\'_|°¬~$&=^`{}\#@*\-,\[\]\\\s]+[\s]*'  #falta ver caraxteres especiales
     arch.write(f'{t.value} ')
     return (t)
 def t_error(t):
@@ -97,46 +98,45 @@ def t_error(t):
 	t.lexer.skip(1)
 def t_APERTURA_PARA(t):
       r'<para>'
-      arch.write("<p>")
+      arch.write("<p>\n")
       return(t)
 def t_CIERRE_PARA(t):
       r'</para>'
-      arch.write("</p>")
+      arch.write("</p>\n")
       return(t)
 def t_APERTURA_TITLE(t):
       r'<title>'
       global H
       if H == 0:
-            arch.write("<h1>")
-            H +=1
+            arch.write("<h1>\n")
       else:
-            arch.write("<h2>")
+            arch.write("<h2>\n")
       return(t)
 def t_CIERRE_TITLE(t):
       r'</title>'
       global H
-      if H > 0:
-            arch.write("</h1>")
+      if H == 0:
+            arch.write("</h1>\n")
             H +=1
       else:
-            arch.write("</h2>")
+            arch.write("</h2>\n")
       return(t)
 
 def t_APERTURA_INFO(t):
       r'<info>'
-      arch.write('<div style="color:white;background-color:green;font-size:8pts"><p>')   #anda bien
+      arch.write('<div style="color:white;background-color:green;font-size:8pts"><p>\n')   #anda bien
       return(t)
 def t_CIERRE_INFO(t):
       r'</info>'
-      arch.write('</p></div>')
+      arch.write('</p></div>\n')
       return(t)
 def t_APERTURA_IMPORTANT(t):
       r'<important>'
-      arch.write('<div style="background-color:red;color:white">') #anda bien
+      arch.write('<div style="background-color:red;color:white">\n') #anda bien
       return(t)
 def t_CIERRE_IMPORTANT(t):
       r'</important>'
-      arch.write('</div>')
+      arch.write('</div>\n')
       return(t)
 def t_APERTURA_IMAGEDATA (t):
       r'<imagedata\s+fileref="[(http(s)?|ftp(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)"\s*[/]>'
@@ -146,85 +146,85 @@ def t_APERTURA_VIDEODATA (t):
       return(t)
 def t_APERTURA_LINK (t):
       r'<link\s+xlink:href ="[(http(s)?|ftp(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)"\s*[/]>'
-      arch.write(f'<a href="{t.value}">esto es un link</a>')
+      arch.write(f'<a href="{t.value}">esto es un link</a>\n')
       return (t)
 def t_APERTURA_INFORMALTABLE(t):
       r'<informaltable>'
-      arch.write("<table>")
+      arch.write("<table>\n")
       return (t)
 def t_CIERRE_INFORMALTABLE(t):
       r'</informaltable>'
-      arch.write("</table>")
+      arch.write("</table>\n")
       return (t)
 def t_APERTURA_THEAD(t):
       r'<thead>'
-      arch.write("<thead>")
+      arch.write("<thead>\n")
       global Tpos
       Tpos = 0                            #Tpos significa "posicion en tabla" si es = 0 es porque estamos en el head
       return(t)                           #Para canda entry en head necesitamos <th></th>, mientras que para tbody o tfoot
 def t_CIERRE_THEAD(t):                      #se requiere de <td></td>
       r'</thead>'
-      arch.write("</thead>")
+      arch.write("</thead>\n")
       return(t)
 def t_APERTURA_TBODY(t):
       r'<tbody>'
-      arch.write("<tbody>")
+      arch.write("<tbody>\n")
       global Tpos
       Tpos = 1
       return(t)
 def t_CIERRE_TBODY(t):
       r'</tbody>'
-      arch.write("</tbody>")
+      arch.write("</tbody>\n")
       return(t)
 def t_APERTURA_TFOOT(t):
       r'<tfood>'
       global Tpos
       Tpos=1
-      arch.write("<tfood>")
+      arch.write("<tfood>\n")
       return(t)
 def t_CIERRE_TFOOT(t):
       r'</tfood>'
-      arch.write("</tfood>")
+      arch.write("</tfood>\n")
       return(t)
 def t_APERTURA_ROW(t):                                #un problema con esto es que en html todos son tr y se diferencian adentro usando 
       r'<row>'                                        #<th></th> para los encabezados y pies de la tabla
-      arch.write("</tr>")
+      arch.write("<tr>\n")
       return (t)
 def t_CIERRE_ROW(t):
       r'</row>'
-      arch.write("</tr>")
+      arch.write("</tr>\n")
       return (t)
 def t_APERTURA_ENTRY(t): 
       r'<entry>'
       global Tpos
       if Tpos == 0:
-            arch.write("<th>")
+            arch.write("<th>\n")
       elif Tpos == 1:
-            arch.write("<td>")
+            arch.write("<td>\n")
       return (t)
 def t_CIERRE_ENTRY(t): 
       r'</entry>'
       global Tpos
       if Tpos == 0:
-            arch.write("</th>")
+            arch.write("</th>\n")
       elif Tpos == 1:
-            arch.write("</td>")
+            arch.write("</td>\n")
       return (t)
 def t_APERTURA_ITEMIZEDLIST(t):
       r'<itemizedlist>'
-      arch.write("<ul>")
+      arch.write("<ul>\n")
       return (t)
 def t_CIERRE_ITEMIZEDLIST(t):
       r'</itemizedlist>'
-      arch.write("</ul>")
+      arch.write("</ul>\n")
       return (t)
 def t_APERTURA_LISTITEM(t):
       r'<listitem>'
-      arch.write("<il>")
+      arch.write("<il>\n")
       return (t)
 def t_CIERRE_LISTITEM(t):
       r'</listitem>'
-      arch.write("</il>")
+      arch.write("</il>\n")
       return (t)
 
 lexer = lex.lex()

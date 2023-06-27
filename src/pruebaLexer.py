@@ -62,8 +62,8 @@ elif op == "2":                                       #ingreso por archivo
                         if tok.type == "ERROR_1" or tok.type == "ERROR_2" or tok.type == "ERROR_3":
                               print(f"error lexico en linea {tok.lineno} ({tok.value})")
                               lexico = 1
-                        #else:
-                              #print(tok)
+                        else:
+                              print(tok)
                   cambio = ruta.replace(".xml","")
                   if lexico == 0:
                         print("Analisis Lexico exitoso")
