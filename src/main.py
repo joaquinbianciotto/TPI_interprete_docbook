@@ -1,7 +1,8 @@
-from lexer import lexer
+
 import os
 import sys
-from lexer import arch
+
+
 def borrarPantalla(): #Borra lo ya escrito en pantalla
       if os.name == "posix":
             os.system ("clear")
@@ -16,15 +17,19 @@ if op == "1":                                               #ingreso manual
       while True: #ciclo para ingresar datos hasta que eleccion sea 0
             print("ingrese lo que quiere analizar")
             cadena = input()    
-            lexer.input(cadena)
-            while True:
-                  tok = lexer.token()
+            #lexer.input(cadena)
+            #while True:
+                  #tok = lexer.token()
 
-                  if not tok : break
-                  if tok.type == "ERROR_1" or tok.type == "ERROR_2" or tok.type == "ERROR_3":
-                        print(f"error lexico en linea {tok.lineno} ({tok.value})")
-                  else:
-                        print(tok)
+                  #if not tok : break
+                  #if tok.type == "ERROR_1" or tok.type == "ERROR_2" or tok.type == "ERROR_3":
+                        #print(f"error lexico en linea {tok.lineno} ({tok.value})")
+                  #else:
+                        #print(tok)
+            check = 1
+            parser2.parse(cadena)
+            if check == 1:
+                  print("complilacion correcta\n")
             print("desea continuar?\n1 para continuar\n0 para terminar")
             eleccion = input()
             if eleccion == "0": break

@@ -95,6 +95,7 @@ def t_newline(t):
 def t_DT1(t):
       r'<[!]DOCTYPE\sarticle>'
       arch.write("<!DOCTYPE html>")
+      return(t)
 def t_TEXTO (t):
     r'[\w.,:;_%/+?¿¡!()"\'_|°¬~$&=^`{}\#@*\-,\[\]\\]+'  #falta ver caraxteres especiales
     arch.write(f'{t.value} ')
