@@ -400,7 +400,8 @@ def p_k(p):
 
 #imagenes y multimedia
 def p_mobj(p):
-    ''' mobj : APERTURA_MEDIAOBJECT info l CIERRE_MEDIAOBJECT'''
+    ''' mobj : APERTURA_MEDIAOBJECT info l CIERRE_MEDIAOBJECT
+        |APERTURA_MEDIAOBJECT l CIERRE_MEDIAOBJECT'''
 def p_l(p):
     ''' l : vobj l 
         | iobj l 
