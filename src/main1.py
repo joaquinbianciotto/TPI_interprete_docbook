@@ -13,7 +13,6 @@ print ("Hola este es el analizador Sintactico")
 print ("1 para ingresar datos a mano\n2 si quiere cargar datos desde un archivo\n")
 op = input()
 errores = []
-lexico = 0
 if op == "1":                                               #ingreso manual
     borrarPantalla()
     while True: #ciclo para ingresar datos hasta que eleccion sea 0
