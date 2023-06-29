@@ -295,7 +295,8 @@ def p_tgroup(p):
 def p_o(p):
     ''' o : thead tfood tbody 
         | tfood tbody 
-        | thead tbody'''
+        | thead tbody
+        | tbody'''
 def p_thead(p):
     ''' thead : APERTURA_THEAD oo CIERRE_THEAD'''
 def p_tfood(p):

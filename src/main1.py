@@ -3,6 +3,8 @@ from parser1 import parser
 import os
 import sys
 from lexer import arch
+
+
 def borrarPantalla(): #Borra lo ya escrito en pantalla
       if os.name == "posix":
             os.system ("clear")
@@ -55,13 +57,13 @@ elif op == "2":                                       #ingreso por archivo
                         if k.name == f"{cambio}.html":
                             os.remove(f"src/html_generados/{cambio}.html")
             os.rename("src/html_generados/archivo.html",f"src/html_generados/{cambio}.html" )
-            os.system("pause")
+            input("Pulsa cualquier tecla para continuar...")
     else:
         print("numero invalido")
-        os.system("pause")
+        input("Pulsa cualquier tecla para continuar...")
 else:
       print("volve a empezar")
-      os.system("pause")
+      input("Pulsa cualquier tecla para continuar...")
 
 
                   
