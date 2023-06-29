@@ -106,20 +106,9 @@ def t_CIERRE_PARA(t):
       return(t)
 def t_APERTURA_TITLE(t):
       r'<title>'
-      global H
-      if H == 0:
-            arch.write("<h1>\n")
-      else:
-            arch.write("<h2>\n")
       return(t)
 def t_CIERRE_TITLE(t):
       r'</title>'
-      global H
-      if H == 0:
-            arch.write("</h1>\n")
-            H +=1
-      else:
-            arch.write("</h2>\n")
       return(t)
 
 def t_APERTURA_INFO(t):

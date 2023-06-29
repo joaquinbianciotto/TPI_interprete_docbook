@@ -2,7 +2,7 @@ import ply.yacc as yacc
 import os 
 import codecs 
 import re
-from lexer import tokens 
+from lexer import tokens,arch
 correcto = 0
 global i
 i = 0
@@ -12,10 +12,14 @@ def p_sigma(p):
         | DT1 APERTURA_ARTICLE y x CIERRE_ARTICLE 
         | DT1 APERTURA_ARTICLE x z CIERRE_ARTICLE
         | DT1 APERTURA_ARTICLE x CIERRE_ARTICLE'''
-def p_y(p):
+def p_y(p):                                                             #y deriva en info o en title y se corresponde solo con article
     ''' y : info title
         | info 
         | title'''
+def p_y2(p):                                                            #y2 deriva en info o en title2 y se corresponde solo con section y simplesection
+    ''' y2 : info title2
+        | info 
+        | title2'''
 def p_x(p):
     ''' x : itemlist x 
         | important x 
@@ -40,13 +44,17 @@ def p_z(p):
         | ssec z 
         | sec 
         | ssec'''
+    
+
 def p_sec(p):
-    ''' sec : APERTURA_SECTION y x z CIERRE_SECTION
-        | APERTURA_SECTION y x CIERRE_SECTION
+    ''' sec : APERTURA_SECTION y2 x z CIERRE_SECTION
+        | APERTURA_SECTION y2 x CIERRE_SECTION
         | APERTURA_SECTION x z CIERRE_SECTION
         | APERTURA_SECTION x CIERRE_SECTION''' 
+    
+
 def p_ssec(p):
-    ''' ssec : APERTURA_SIMPLESECT y x CIERRE_SIMPLESECT
+    ''' ssec : APERTURA_SIMPLESECT y2 x CIERRE_SIMPLESECT
         | APERTURA_SIMPLESECT x CIERRE_SIMPLESECT'''  
     
 
@@ -60,16 +68,16 @@ def p_a(p):
         | author a 
         | date a 
         | copy a 
-        | title a
+        | title3 a
         | mobj 
         | abstract 
         | address 
         | author 
         | date 
         | copy 
-        | title'''                         
+        | title3'''                         
 def p_abstract(p):
-    ''' abstract : APERTURA_ABSTRACT title b CIERRE_ABSTRACT
+    ''' abstract : APERTURA_ABSTRACT title3 b CIERRE_ABSTRACT
         | APERTURA_ABSTRACT b CIERRE_ABSTRACT'''
 def p_b(p):
     ''' b : para b 
@@ -107,8 +115,36 @@ def p_e(p):
 def p_f(p):
     ''' f : holder f 
         | holder'''
+    
+
 def p_title(p):
-    ''' title : APERTURA_TITLE g CIERRE_TITLE'''
+    ''' title : seen_AT1 APERTURA_TITLE g seen_CT1 CIERRE_TITLE '''    #la regla seen_AT es la propuesta de ply para acciones embebidas
+    
+def p_seen_AT1(p):
+    "seen_AT1 :"                                                  #se define una regla seen_token que unicamente realiza una accion
+    arch.write("<h1>\n")   
+def p_seen_CT1(p):
+    "seen_CT1 : "                                                  
+    arch.write("</h1>\n")
+        
+def p_title2(p):
+    ''' title2 : seen_AT2 APERTURA_TITLE  g seen_CT2 CIERRE_TITLE'''        #Si entra a titlen si o si tiene que abrir etiqueta hn
+def p_seen_AT2(p):
+    '''seen_AT2 :'''                                                  
+    arch.write("<h2>\n")
+def p_seen_CT2(p):
+    '''seen_CT2 :'''                                                  
+    arch.write("</h2>\n")
+
+def p_title3(p):
+    ''' title3 : seen_AT3 APERTURA_TITLE g seen_CT3 CIERRE_TITLE '''
+def p_seen_AT3(p):
+    '''seen_AT3 :'''                                                  
+    arch.write("<h3>\n")
+def p_seen_CT3(p):
+    '''seen_CT3 :'''                                                  
+    arch.write("</h3>")
+
 def p_g(p):
     ''' g : TEXTO g 
         | emphasis g 
@@ -165,7 +201,7 @@ def p_i(p):
         | mobj 
         | inftable'''   
 def p_important(p):
-    ''' important : APERTURA_IMPORTANT title j CIERRE_IMPORTANT
+    ''' important : APERTURA_IMPORTANT title3 j CIERRE_IMPORTANT
         | APERTURA_IMPORTANT j CIERRE_IMPORTANT'''
 def p_j(p):
     ''' j : itemlist j
