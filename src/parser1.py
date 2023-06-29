@@ -344,6 +344,11 @@ def p_t(p):
 def p_error(p):
     global correcto
     correcto = 1                           
-    print ("Error de sintaxis",p)
+    if p:
+        print(f"Error de sintaxis {p.value}. Revise linea {p.lineno}")
+        # Descartar el token de error para que siga su camino
+        parser.errok()
+    else:
+         print("Error de sintaxis EOF")
 
 parser = yacc.yacc()
