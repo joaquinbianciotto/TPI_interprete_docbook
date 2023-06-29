@@ -3,4 +3,20 @@
 <info><title>  hola mundo  </title></info>
 <title> yoel </title>
 <important><comment> ja </comment></important>
+<section> 
+   <para>
+      holaaaa
+      <link xlink:href="https://frre.cvg.utn.edu.ar/course/view.php?id=492"/>
+      tpi sintaxis
+   </para>
+
+   <mediaobject>
+     
+     <imageobject>
+         <imagedata fileref="https://drive.google.com/drive/folders/1SrWWquSMU-MgMGWKQO039I85thMNilbO?fbclid=IwAR3aujO7ZW-Ix7oG6s0venMB5sSuauuIMm7mGcFmzlXLzFT9jIM6rjspmcI"/>
+     </imageobject>
+    </mediaobject>
+
+</section>   
 </article>
+

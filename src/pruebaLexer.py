@@ -25,8 +25,12 @@ if op == "1":                                               #ingreso manual
                   if not tok : break
                   if tok.type == "ERROR_1" or tok.type == "ERROR_2" or tok.type == "ERROR_3":
                         print(f"error lexico en linea {tok.lineno} ({tok.value})")
+                        lexico = 1
                   else:
                         print(tok)
+                  if lexico == 0:
+                         print("Analisis Lexico exitoso")
+              
             print("desea continuar?\n1 para continuar\n0 para terminar")
             eleccion = input()
             if eleccion == "0": break
@@ -67,13 +71,6 @@ elif op == "2":                                       #ingreso por archivo
                   cambio = ruta.replace(".xml","")
                   if lexico == 0:
                         print("Analisis Lexico exitoso")
-                  correcto = 0                     ##nose si va esto 
-                  parser.parse()
-                  from parser1 import correcto
-                  print (correcto)
-                  arch.close()
-                  if correcto != 1:
-                        print("Sintaxis perfecta")
               
                   with os.scandir('src/html_generados/') as htmls:
                         for k in htmls:
