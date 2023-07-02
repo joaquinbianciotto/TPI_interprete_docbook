@@ -161,7 +161,8 @@ def p_emphasis(p):
 def p_comment(p):
     ''' comment : APERTURA_COMMENT h CIERRE_COMMENT'''
 def p_link(p):
-    ''' link : APERTURA_LINK h'''   
+    ''' link : APERTURA_LINK h CIERRE_LINK'''   
+
 def p_h(p):
     ''' h : TEXTO h 
         | emphasis h 
@@ -341,6 +342,7 @@ def p_t(p):
 
 
 #error
+
 def p_error(p):
     global correcto
     correcto = 1                           

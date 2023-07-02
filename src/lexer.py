@@ -10,7 +10,7 @@ tokens = [ 'DT1', 'APERTURA_ARTICLE', 'CIERRE_ARTICLE' , 'APERTURA_PARA', 'CIERR
           'CIERRE_SIMPARA' , 'APERTURA_ADDRESS' , 'CIERRE_ADDRESS' , 'APERTURA_MEDIAOBJECT' , 'CIERRE_MEDIAOBJECT' , 
           'APERTURA_INFORMALTABLE' , 'CIERRE_INFORMALTABLE' , 'APERTURA_COMMENT' , 'CIERRE_COMMENT' , 
           'APERTURA_ABSTRACT' , 'CIERRE_ABSTRACT' , 'APERTURA_SECTION' , 'CIERRE_SECTION' , 'APERTURA_SIMPLESECT' ,
-          'CIERRE_SIMPLESECT' , 'APERTURA_EMPHASIS' , 'CIERRE_EMPHASIS' , 'APERTURA_LINK' , 
+          'CIERRE_SIMPLESECT' , 'APERTURA_EMPHASIS' , 'CIERRE_EMPHASIS' , 'APERTURA_LINK' , 'CIERRE_LINK' ,
           'APERTURA_FIRSTNAME' , 'CIERRE_FIRSTNAME' , 'APERTURA_SURNAME' , 'CIERRE_SURNAME' , 'APERTURA_STREET' , 
           'CIERRE_STREET' , 'APERTURA_CITY' , 'CIERRE_CITY' , 'APERTURA_STATE' , 'CIERRE_STATE' , 'APERTURA_PHONE' , 
           'CIERRE_PHONE' , 'APERTURA_EMAIL' , 'CIERRE_EMAIL' , 'APERTURA_DATE' , 'CIERRE_DATE' , 'APERTURA_YEAR' , 
@@ -19,7 +19,7 @@ tokens = [ 'DT1', 'APERTURA_ARTICLE', 'CIERRE_ARTICLE' , 'APERTURA_PARA', 'CIERR
           'CIERRE_LISTITEM' , 'APERTURA_TGROUP' , 'CIERRE_TGROUP' , 'APERTURA_THEAD' , 'CIERRE_THEAD' , 'APERTURA_TFOOT' ,
           'CIERRE_TFOOT' , 'APERTURA_TBODY' , 'CIERRE_TBODY' , 'APERTURA_ROW' , 'CIERRE_ROW' , 'APERTURA_ENTRY' ,
           'CIERRE_ENTRY' , 'APERTURA_ENTRYTBL' , 'CIERRE_ENTRYTBL','APERTURA_AUTHOR','CIERRE_AUTHOR','ERROR_1','ERROR_2','ERROR_3','newline' ,
-          'APERTURA_COPYRIGHT' , 'CIERRE_COPYRIGHT'
+          'APERTURA_COPYRIGHT' , 'CIERRE_COPYRIGHT' 
 		]
 
 t_ignore = '\t '   #nose que hace pero vi en varios, creo q ignora espacios en blanco o tabulacion
@@ -71,8 +71,6 @@ t_APERTURA_IMAGENOBJECT = r'<imageobject>'
 t_CIERRE_IMAGENOBJECT = r'</imageobject>'
 t_APERTURA_TGROUP = r'<tgroup>'
 t_CIERRE_TGROUP = r'</tgroup>'
-t_APERTURA_ENTRYTBL = r'<entrytbl>'
-t_CIERRE_ENTRYTBL = r'</entrytbl>'
 t_APERTURA_COPYRIGHT = r'<copyright>'
 t_CIERRE_COPYRIGHT = r'</copyright>'
 t_ERROR_1 = r'<[\w]+>'
@@ -94,7 +92,7 @@ def t_TEXTO (t):
     arch.write(f'{t.value} ')
     return (t)
 def t_error(t):
-	print ("caracter ilegal %s" % t.value[0])
+	#print ("caracter ilegal %s" % t.value[0])
 	t.lexer.skip(1)
 def t_APERTURA_PARA(t):
       r'<para>'
@@ -134,7 +132,7 @@ def t_APERTURA_VIDEODATA (t):
       r'<videodata\s+fileref="[(http(s)?|ftp(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)"\s*[/]>'
       return(t)
 def t_APERTURA_LINK (t):
-      r'<link\s+xlink:href ="[(http(s)?|ftp(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)"\s*[/]>'
+      r'<link\s+xlink:href ="[(http(s)?|ftp(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)"\s*>'
       direccion= t.value
       i=0
       x=0
@@ -147,7 +145,11 @@ def t_APERTURA_LINK (t):
                         newdir+= direccion[x]
                         x+=1
                   i=1
-      arch.write(f'<a href="{newdir}">esto es un link</a>\n')
+      arch.write(f'<a href="{newdir}">\n')
+      return (t)
+def t_CIERRE_LINK (t):
+      r'</link>'
+      arch.write("</a>")
       return (t)
 def t_APERTURA_INFORMALTABLE(t):
       r'<informaltable>'
@@ -210,6 +212,14 @@ def t_CIERRE_ENTRY(t):
             arch.write("</th>\n")
       elif Tpos == 1:
             arch.write("</td>\n")
+      return (t)
+def t_APERTURA_ENTRYTBL(t):
+      r'<entrytbl>'
+      arch.write("<table>") 
+      return (t)
+def t_CIERRE_ENTRYTBL(t):
+      r'</entrytbl>'
+      arch.write("</table>")
       return (t)
 def t_APERTURA_ITEMIZEDLIST(t):
       r'<itemizedlist>'
