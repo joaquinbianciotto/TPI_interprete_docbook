@@ -1,5 +1,4 @@
 from lexer import lexer
-from parser1 import parser
 import os
 import sys
 from lexer import arch

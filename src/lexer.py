@@ -135,7 +135,19 @@ def t_APERTURA_VIDEODATA (t):
       return(t)
 def t_APERTURA_LINK (t):
       r'<link\s+xlink:href ="[(http(s)?|ftp(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)"\s*[/]>'
-      arch.write(f'<a href="{t.value}">esto es un link</a>\n')
+      direccion= t.value
+      i=0
+      x=0
+      newdir=""
+      while i==0:
+            x=x+1
+            if direccion[x] == '"':
+                  x+=1
+                  while direccion[x] != '"':
+                        newdir+= direccion[x]
+                        x+=1
+                  i=1
+      arch.write(f'<a href="{newdir}">esto es un link</a>\n')
       return (t)
 def t_APERTURA_INFORMALTABLE(t):
       r'<informaltable>'

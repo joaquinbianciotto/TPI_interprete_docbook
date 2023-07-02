@@ -28,6 +28,7 @@ if op == "1":                                               #ingreso manual
         eleccion = input()
         if eleccion == "0": break
         borrarPantalla()
+    arch.close()
 elif op == "2":                                       #ingreso por archivo
     n = 0
     dir = 'prueba/'                   #elegir el archivo
@@ -51,6 +52,7 @@ elif op == "2":                                       #ingreso por archivo
             from parser1 import correcto
             if correcto == 0:
                 print("sintaxis correcta")
+            arch.close()
             cambio = ruta.replace(".xml","")
             with os.scandir('src/html_generados/') as htmls:
                 for k in htmls:
