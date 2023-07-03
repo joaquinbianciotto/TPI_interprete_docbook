@@ -1,7 +1,0 @@
-El lexer a sido sometido a los siguientes errores del archivo "LISTAS_ERROR.xml"
-
-linea 21 -> se abre una etiqueta <itemizedlist> dentro de la etiqueta <listitem>
-
-linea 22 -> se cierra la etiqueta </para> antes de cerrar la etiqueta de contenia dentro </emphasis>
-
-linea 27 -> se abre la etiqueta <date> dentro de la etiqueta <emphasis>
