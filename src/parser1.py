@@ -4,14 +4,13 @@ import codecs
 import re
 from lexer import tokens,arch
 correcto = 0
-global i
-i = 0
+
 #vi en otros donde cada no terminal q tenia mas de una produccion, por cada produccion hacian una funcion
 def p_sigma(p):
     ''' sigma : DT1 APERTURA_ARTICLE y x z CIERRE_ARTICLE
         | DT1 APERTURA_ARTICLE y x CIERRE_ARTICLE 
         | DT1 APERTURA_ARTICLE x z CIERRE_ARTICLE
-        | DT1 APERTURA_ARTICLE x CIERRE_ARTICLE'''
+        | DT1 APERTURA_ARTICLE x CIERRE_ARTICLE'''                                 
 def p_y(p):                                                             #y deriva en info o en title y se corresponde solo con article
     ''' y : info title
         | info 
@@ -128,7 +127,7 @@ def p_seen_CT1(p):
     arch.write("</h1>\n")
         
 def p_title2(p):
-    ''' title2 : seen_AT2 APERTURA_TITLE  g seen_CT2 CIERRE_TITLE'''        #Si entra a titlen si o si tiene que abrir etiqueta hn
+    ''' title2 : seen_AT2 APERTURA_TITLE  g seen_CT2 CIERRE_TITLE'''        #Si entra a titleN si o si tiene que abrir etiqueta hN
 def p_seen_AT2(p):
     '''seen_AT2 :'''                                                  
     arch.write("<h2>\n")

@@ -22,8 +22,7 @@ tokens = [ 'DT1', 'APERTURA_ARTICLE', 'CIERRE_ARTICLE' , 'APERTURA_PARA', 'CIERR
           'APERTURA_COPYRIGHT' , 'CIERRE_COPYRIGHT' 
 		]
 
-t_ignore = '\t '   #nose que hace pero vi en varios, creo q ignora espacios en blanco o tabulacion
-H=0
+t_ignore = '\t '   #ignora espacios en blanco
 Tpos = 1
 t_APERTURA_ARTICLE = r'<article>'
 t_CIERRE_ARTICLE = r'</article>'
@@ -88,7 +87,7 @@ def t_DT1(t):
       arch.write("<!DOCTYPE html>\n")
       return(t)
 def t_TEXTO (t):
-    r'[\w.,:;_%/+?¿¡!()"\'_|°¬~$&=^`{}\#@*\-,\[\]\\\s]+[\s]*'  #falta ver caraxteres especiales
+    r'[\w.,:;_%/+?¿¡!()"\'_|°¬~$&=^`{}\#@*\-,\[\]\\\s]+[\s]*'  
     arch.write(f'{t.value} ')
     return (t)
 def t_error(t):
@@ -111,15 +110,15 @@ def t_CIERRE_TITLE(t):
 
 def t_APERTURA_INFO(t):
       r'<info>'
-      arch.write('<div style="color:white;background-color:green;font-size:8pts"><p>\n')   #anda bien
+      arch.write('<p style="color:white;background-color:green;font-size:8px">\n')   
       return(t)
 def t_CIERRE_INFO(t):
       r'</info>'
-      arch.write('</p></div>\n')
+      arch.write('</p>\n')
       return(t)
 def t_APERTURA_IMPORTANT(t):
       r'<important>'
-      arch.write('<div style="background-color:red;color:white">\n') #anda bien
+      arch.write('<div style="background-color:red;color:white">\n') 
       return(t)
 def t_CIERRE_IMPORTANT(t):
       r'</important>'
@@ -137,7 +136,7 @@ def t_APERTURA_LINK (t):
       i=0
       x=0
       newdir=""
-      while i==0:
+      while i==0:                                     #Guarda en la variable "newdir" solo la url que aparecce en la etiqueta link
             x=x+1
             if direccion[x] == '"':
                   x+=1
@@ -189,8 +188,8 @@ def t_CIERRE_TFOOT(t):
       r'</tfood>'
       arch.write("</tfood>\n")
       return(t)
-def t_APERTURA_ROW(t):                                #un problema con esto es que en html todos son tr y se diferencian adentro usando 
-      r'<row>'                                        #<th></th> para los encabezados y pies de la tabla
+def t_APERTURA_ROW(t):                                #en html todos los "row" son tr y se diferencian adentro usando 
+      r'<row>'                                        #<th></th> para los encabezados y <td></td> para el resto
       arch.write("<tr>\n")
       return (t)
 def t_CIERRE_ROW(t):
@@ -238,4 +237,5 @@ def t_CIERRE_LISTITEM(t):
       arch.write("</il>\n")
       return (t)
 
+#creacion del lexer 
 lexer = lex.lex()

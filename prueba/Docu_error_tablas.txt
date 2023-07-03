@@ -1,9 +1,0 @@
-El lexer a sido sometido a los siguientes errores del archivos "TABLAR_ERROR.xml"
-
-linea 13 -> se abre la etiqueta <entry> pero nunca se cierra
-
-linea 20 -> directamente se escribe una etiqueta <para> despues de <row> sin haber estado antes la etiqueta <entry>
-
-linea 29 -> se abre la etiqueta <tfood> sin antes cerrar la etiqueta </tbody>
-
-linea 42 -> error en la palabra, se escribe <setion> en vez de <section>

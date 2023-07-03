@@ -2,6 +2,9 @@ from lexer import lexer
 import os
 import sys
 from lexer import arch
+#
+# Este es el archivo entregado en la segunda presentacion, se mantiene para probar unicamente la tokenizacion.
+#
 def borrarPantalla(): #Borra lo ya escrito en pantalla
       if os.name == "posix":
             os.system ("clear")
@@ -53,7 +56,7 @@ elif op == "2":                                       #ingreso por archivo
       borrarPantalla()
       if int(op2) <= n:
             ruta = ficheros[int(op2)-1]
-            with open(f"prueba/{ruta}","r",encoding="utf-8") as maestro: #esto ya funciona para cualquier fichero en prueba/
+            with open(f"prueba/{ruta}","r",encoding="utf-8") as maestro: 
                   print(f"abierto archivo: {ruta}")
                   lexer.input(maestro.read())               
                   while True:
