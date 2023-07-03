@@ -40,7 +40,7 @@ if op == "1":                                               #ingreso manual
 
 elif op == "2":                                       #ingreso por archivo
       n = 0
-      dir = 'prueba/'                   #elegir el archivo
+      dir = 'doc/prueba/'                   #elegir el archivo
       with os.scandir(dir) as ficheros:
             print(type(ficheros))
             ficheros = [fichero.name for fichero in ficheros if fichero.is_file()]    #ficheros es una lista con los archivos de la carpeta prueba
@@ -56,7 +56,7 @@ elif op == "2":                                       #ingreso por archivo
       borrarPantalla()
       if int(op2) <= n:
             ruta = ficheros[int(op2)-1]
-            with open(f"prueba/{ruta}","r",encoding="utf-8") as maestro: 
+            with open(f"doc/prueba/{ruta}","r",encoding="utf-8") as maestro: 
                   print(f"abierto archivo: {ruta}")
                   lexer.input(maestro.read())               
                   while True:
