@@ -50,18 +50,12 @@ t_APERTURA_SURNAME = r'<surname>'
 t_CIERRE_SURNAME = r'</surname>'
 t_APERTURA_STREET = r'<street>'
 t_CIERRE_STREET = r'</street>'
-t_APERTURA_CITY = r'<city>'
-t_CIERRE_CITY = r'</city>'
 t_APERTURA_STATE = r'<state>'
 t_CIERRE_STATE = r'</state>'
 t_APERTURA_PHONE = r'<phone>'
 t_CIERRE_PHONE = r'</phone>'
 t_APERTURA_EMAIL = r'<email>'
 t_CIERRE_EMAIL = r'</email>'
-t_APERTURA_DATE = r'<date>'
-t_CIERRE_DATE = r'</date>'
-t_APERTURA_YEAR = r'<year>'
-t_CIERRE_YEAR = r'</year>'
 t_APERTURA_HOLDER = r'<holder>'
 t_CIERRE_HOLDER = r'</holder>'
 t_APERTURA_VIDEOOBJECT = r'<videoobject>'
@@ -76,7 +70,7 @@ t_ERROR_1 = r'<[\w]+>'
 t_ERROR_2 = r'<[\w]+\s[\w]+=*[\w"]+\s*/*>'
 t_ERROR_3 = r'</[\w]+>'
 
-arch= open("../src/html_generados/archivo.html","w",encoding="utf-8")
+arch= open("src/html_generados/archivo.html","w",encoding="utf-8")
 
 #funciones
 def t_newline(t):
@@ -93,6 +87,24 @@ def t_TEXTO (t):
 def t_error(t):
 	#print ("caracter ilegal %s" % t.value[0])
 	t.lexer.skip(1)
+def t_APERTURA_DATE (t):
+      r'<date>'
+      return(t)
+def t_CIERRE_DATE (t):
+      r'</date>'
+      return (t)
+def t_APERTURA_CITY (t):
+      r'<city>'
+      return (t)
+def t_CIERRE_CITY (t):
+      r'</city>'
+      return (t)
+def t_APERTURA_YEAR (t):
+      r'<year>'
+      return t
+def t_CIERRE_YEAR (t):
+      r'</year>'
+      return t
 def t_APERTURA_PARA(t):
       r'<para>'
       arch.write("<p>\n")
