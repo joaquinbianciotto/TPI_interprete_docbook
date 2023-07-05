@@ -70,7 +70,7 @@ t_ERROR_1 = r'<[\w]+>'
 t_ERROR_2 = r'<[\w]+\s[\w]+=*[\w"]+\s*/*>'
 t_ERROR_3 = r'</[\w]+>'
 
-arch= open("../src/html_generados/archivo.html","w",encoding="utf-8")
+arch= open("src/html_generados/archivo.html","w",encoding="utf-8")
 
 #funciones
 def t_newline(t):
