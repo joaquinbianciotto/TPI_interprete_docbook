@@ -31,7 +31,7 @@ if op == "1":                                               #ingreso manual
     arch.close()
 elif op == "2":                                       #ingreso por archivo
     n = 0
-    dir = 'doc/prueba/'                   #elegir el archivo
+    dir = '../doc/prueba/'                   #elegir el archivo
     with os.scandir(dir) as ficheros:
         ficheros = [fichero.name for fichero in ficheros if fichero.is_file()]    #ficheros es una lista con los archivos de la carpeta prueba
     for j in ficheros:
@@ -46,7 +46,7 @@ elif op == "2":                                       #ingreso por archivo
     borrarPantalla()
     if int(op2) <= n:
         ruta = ficheros[int(op2)-1]
-        with open(f"doc/prueba/{ruta}","r",encoding="utf-8") as maestro: 
+        with open(f"../doc/prueba/{ruta}","r",encoding="utf-8") as maestro: 
             parser.parse(maestro.read())
             from parser1 import correcto
             if correcto == 0:
@@ -56,11 +56,11 @@ elif op == "2":                                       #ingreso por archivo
                 cambio = ruta.replace(".xml","")
             elif ".txt" in ruta:
                 cambio = ruta.replace(".txt","")
-            with os.scandir('src/html_generados/') as htmls:
+            with os.scandir('../src/html_generados/') as htmls:
                 for k in htmls:                                                                         #si ya existe un archivo con el mismo nombre (por multiples ejecuciones por ej) lo borra.
                         if k.name == f"{cambio}.html":
-                            os.remove(f"src/html_generados/{cambio}.html")
-            os.rename("src/html_generados/archivo.html",f"src/html_generados/{cambio}.html" )
+                            os.remove(f"../src/html_generados/{cambio}.html")
+            os.rename("../src/html_generados/archivo.html",f"../src/html_generados/{cambio}.html" )
 
             input("Pulsa cualquier tecla para continuar...")
     else:
