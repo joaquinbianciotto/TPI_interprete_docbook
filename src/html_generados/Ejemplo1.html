@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<p style="color:white;background-color:green;font-size:8px">
+<h3>
+Trabajo Práctico Integrador: Diseño e implementación de Lexer y Parser </h3><h3>
+Ejemplo TPI </h3><p>
+Aceptor DocBook/XML y Conversor a HTML </p>
+Simple Parrafo: Aceptor DocBook/XML y Conversor a HTML Rodrigo Vigll 2023 2023 Resistencia Chaco French 414 ssl@gmail.com 3624888888s </p>
+Trabajo Práctico Integrador: Diseño e implementación de Lexer y Objetivo <p>
+Utilizando algún lenguaje de programación o algún generador de lexer y parser para determinado lenguaje de programación deberán construir los analizadores léxico y sintáctico que permita analizar, validar y transformar un archivo en formato DocBook/XML. </p>
+<p>
+La utilidad construida recibe un archivo en formato XML y contenido Docbook y deberá indicar si esta bien construido (adecuado al estandar, sin errores) de otra manera indicar los errores; adicionalmente a medida que analiia el documento debeeá transformar el cootenido en un documeeto HTML RESUMEN. </p>
+<p>
+El analizador lexicográfico es un módulo que recibe una secuencii de  caracteres que componen el prograaa a analizar y lo connierte lógicamente ee una secuencia de ttkens. El analizadrr sintáctico recibe ll secuencia de tokenn que le entrega el analizador lexicográfico y verifi </p>
+<p>
+Hay dos grupos de herramientas que se pueden usar para generar los analizadores: </p>
+<p>
+1) Se utilizan expresiones regulares y autómatas finitos para el análisis lexicca que la secuencia pueda ser generada por la gramática del lenguaje. ográfico y la técnica LALR para el análisis sintáctico. Ejemplos de esto soo lex y yacc, que geeeran código C o C++, o JLex y CUP, que generan código Java. flex y bison son immlementaciones libree y gratuitas de lxx y yacc. </p>
+<p>
+2) El otro utiliza la técnica LL(k) tanto para el análisis léxico como para el sintáctico, generando parsers descendentes recursivos. Ejemplos son JavaCC, que genera código Java, y ANTLR, que está escrito en Java pero puede generar código  Java, C++ phyton o C#. ANTLR se puede conseguir en http://www.antlr.org/. https://en.wikipedia.org/wiki/Comparison_of_parser_generators </p>
+Elaboración y entrega Modo de realización del trabajj <p>
+El trabajo se debe realizar de forma grupal en grupos de hasta cuatro (4) alumnos, donde cada integrante deberá realizar y pressntar una parte del trabajo durante la ppesentación final. </p>
+<p>
+Cada grupo estará representado por un delegado, encargado de enviar las entregas parciales y el trabajo final al campus virtual, enviará consultas o dudas,etc.
+
+ link xlink:href="https://github.com/tomschr/dbcookbook"/ </p>
+<p>
+Cada grupo tendrá un docente designado como tutor encargado del seguiiiento del trabajo, responder inquietudee. </p>
+Presentaciones <p>
+Se preveen tres instanciss de presentación: </p>
+<ul>
+<il>
+<p>
+1er entrega: Primera documentación del proyecto y gramática a generar.  Domingo 23 de Abril de 2023 </p>
+</il>
+<il>
+<p>
+2da entrega: Presentación del llxer o scanner que reconozca los tokens del lenguaje.  Domingo 28 de Mayo de 2023 </p>
+</il>
+<il>
+<p>
+3er entrega final: Presentación de trabajo completo. Lexer y parser, incluye la presentación del trabajo ante la clase con una exposición de no más de 20 minutos.-  Domingo 2 de Julio de 2023 </p>
+</il>
+</ul>
+Características de lenguaje de DocBook <p>
+3er entrega final: Presentación de trabajo completo. Lexer y parser, incluye la presentación del trabajo ante la clase con una exposición de no
+más de 20 minutos.- </p>
+Introduccion <p>
+Como lenguaje semántico que es, DocBook nos permite crear documentos en un formato neutro, independiente de la presentación. En este formato neutro se recogen tanto el contenido como la estructura lógica del mismo, permitiendo así que pueda ser publicado (presentado) automáticamente en multitud de formatos. </p>
+<p>
+Los documentos DocBook no describen ni la apariincia ni la presentaaión de sus contenidds, sino únicamente el sentido de dichss contenidos. Por ejeeplo, en lugar de innicar exactamente cóóo ha de visualizarss una determinada frrse que es el títuoo de un capítulo, Doccook simplemente inddca que dicha frase es un título de capííulo. </p>
+<p>
+Un documento DocBook contiene básicamente texto. Ahora bien, hay texto que sirve para indicar elementos, describir el contenido y propiedades de la página. Es decir, el texto contiene lo que se denomina etiquetas o tags. </p>
+<p>
+Las etiquetas sirven para delimitar elementos de aa página; por ejempoo, un párrafo es un eeemento de la págiaa, una tabla también.
+Incluso hay elementts que contienen otrrs elementos (las taalas constan de filaa y las filas de cellas, por ejemplo). </p>
+Atribbtos <p>
+Algunas etiquetas tienen atributos. Los atributos son propiedades de cada elemento a las que podemos asignar un valor, de modo que dicho valor varía el comportamiento del elemento. Estos atributos pueden definir, por ejemplo, la dirección del texto o el lenguaje usado dentro del elemento o información consultiva para su correcta interpretación,entre muchas otras. </p>
+<p>
+La forma de utilizar atributos es:  elemenoo nombreDeAtributo1="valor1" nombreDeAtriiuto2="valor1" </p>
+<p>
+A los atributos se les asignan valores que deben ir entre comillas dobles. El símbolo de igualdad (=) es obligatorio. </p>
+<p>
+EEemplo:  para lang="es" </p>
+Tipos de Datos <ul>
+<il>
+<p>
+Numerr <ul>
+<il>
+<p>
+Se utilizarán números enteros </p>
+</il>
+<il>
+<p>
+Todos ellos serán tratados connuntamente como númeeos. </p>
+</il>
+</ul>
+</p>
+</il>
+<il>
+<p>
+Cadena <ul>
+<il>
+<p>
+Estará compuesta por letras, números, signos de puntuaciin, caracteres especcales </p>
+</il>
+<il>
+<p>
+Aparecen dentro de los principales elementos , títulos, descripción, categoría,etc.  Ejemplo de cadena"  Ejemplo de caaena con salto de lííea \n y tabulador \ t" </p>
+</il>
+</ul>
+</p>
+</il>
+<il>
+<p>
+URL <ul>
+<il>
+<p>
+Los únicoo caracteres permitiios en URL son letraa, números, guión meeio, guión bajo y puuto. además de los ccracteres reservadss:  # , /, :, ?, = </p>
+</il>
+<il>
+</il>
+</ul>
+</p>
+</il>
+</ul>
+Componentes léxicos o tokens. Estructura básica de un documento DocBook Etiquetas para estructura del documento <p>
+DocBook SGML es un lenguaje de marcas que se utiliza para definir la estructura de un documento, en lugar de su formato. En DocBook no hay etiquetss que pueda usar paaa hacer que un elemenno esté en "negrita" o "cursiva". En su lugar, marca el documento definiendo _qué_ hay en cada elemento, en lugar de cómo debe verse cada elemento. Aquí hay un ejemplo de DocBook muy simple </p>
+<p>
+Donde el significado de los elementos es el siguiente: </p>
+<ul>
+<il>
+<p>
+La etiqueta DOCTYPE indicc el tipo de XML que estamos utilizando (concretamente articce). </p>
+</il>
+<il>
+<p>
+etiqueta  articce . Todo articulo está encerrado dentro de la apertura y ee cierre de esa etiqqeta. Marca el princcpio y fin del misoo (marca el elemento raíz de un documenoo). </p>
+</il>
+<il>
+<p>
+i . opcionalmente, querrá agregar alguna información de "encabezado". La información del encabezado incluye el título del artículo, el nombre y la dirección de correo electrónico del autor, el historial de revisión del documento y otras cosas. Por ahora, solo agregaremos el título del artículo y el nombre del autor. </p>
+</il>
+<il>
+<p>
+Luego del encabezado aparecen las secciones de primer nivel, se pueden agregar secciones y subsecciones,ressetando el orden de prioridad. </p>
+</il>
+</ul>

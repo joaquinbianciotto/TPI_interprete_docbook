@@ -1,0 +1,8 @@
+Linea 15 --> dentro del copy no puede haber texto 
+Linea 20 --> antes de section debe haber al menos uno de los siguientes: ItemizedList|Important|Para|SimPara|Address|MediaObject|InformalTable|Comment|Abstract
+Linea 33 --> antes de section debe haber al menos uno de los siguientes : ItemizedList|Important|Para|SimPara|Address|MediaObject|InformalTable|Comment| Abstract 
+Linea 69 --> se cierra section q no se abre 
+Linea 117 --> abro y cierra list item que no contiene nada
+Linea 122 --> se cierra section q nunca se abre 
+Linea 126 --> antes de section debe ir otra cosa 
+Linea 147 --> falta cerrar dos section 

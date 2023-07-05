@@ -71,6 +71,7 @@ elif op == "2":                                       #ingreso por archivo
                         else:
                               print(tok)
                   cambio = ruta.replace(".xml","")
+                  arch.close()
                   if lexico == 0:
                         print("Analisis Lexico exitoso")
               
