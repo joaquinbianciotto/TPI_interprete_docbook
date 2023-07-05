@@ -122,11 +122,11 @@ def t_CIERRE_TITLE(t):
 
 def t_APERTURA_INFO(t):
       r'<info>'
-      arch.write('<p style="color:white;background-color:green;font-size:8px">\n')   
+      arch.write('<div style="color:white;background-color:green;font-size:8pts"><p>\n')   
       return(t)
 def t_CIERRE_INFO(t):
       r'</info>'
-      arch.write('</p>\n')
+      arch.write('</p></div>\n')
       return(t)
 def t_APERTURA_IMPORTANT(t):
       r'<important>'
