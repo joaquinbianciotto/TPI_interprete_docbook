@@ -12,7 +12,7 @@
         </mediaobject>
 
         <abstract>
-            <para> <link xlink:href="https://es.wikipedia.org/wiki/Archivo:UTN_logo.jpg" /> </para>
+            <para> <link xlink:href="https://es.wikipedia.org/wiki/Archivo:UTN_logo.jpg" > logo aqui </link> </para>
         </abstract>
 
         <abstract>
@@ -105,20 +105,9 @@
                     <entry>
                         Ing. Rodrigo Vigil 
                     </entry>
-                    <entrytbl>
-                        <tbody>
-                            <row>
-                                <entry>
-                                    Ing. Nicolas Tortosa
-                                </entry>
-                            </row>
-                            <row>
-                                <entry>
-                                    Ing. Juliana Jorre
-                                </entry>
-                            </row>
-                        </tbody>
-                    </entrytbl>
+                    <entry>
+                        Ing. Juliana Torre e Ing. Nicolas Tortosa
+                    </entry>
                     <entry>
                         Franco Ballesteros/Ballesta
                     </entry>
